@@ -19,6 +19,13 @@ This will colour code your errors
 ### Cards
 
 
+### constants (such as pi, e)
+
+### Countries of the world
+
+### Periodic table
+
+
 ## Human calculator training
 ### Day of the week for any date calculation
 ./memory_trainer --day_of_week
