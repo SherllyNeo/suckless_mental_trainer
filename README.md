@@ -1,6 +1,12 @@
-# Suckless memory trainer
+# Suckless mental trainer
 
-A memory trainer with usage ./memory_trainer --mode
+## Introduction
+A suckless style mental trainer. Probably more bloated in features than other suckless software however I have been unable to find any satisficatory mental training software and wished to make my own.
+
+### Features
+This program has lots of features designed to help you train for memory competition, arithmetic competitions, blindfold chess and other intelligence events.
+
+A mental trainer with usage ./mental_trainer --mode
 then game options
 
 This will colour code your errors
