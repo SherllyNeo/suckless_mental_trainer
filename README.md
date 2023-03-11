@@ -17,9 +17,17 @@ This will colour code your errors
 ./memory_trainer --numbers amount_of_digits length_of_time
 
 ### Cards
-
+./memory_trainer --numbers amount_of_cards length_of_time
 
 ### constants (such as pi, e)
+./memory_trainer --constants "constant_name" amount_of_digits
+
+This will ask you to input that many digits then compare at the end, it will not show the constant
+1000 digits of e
+1000 digits of pi
+1000 digits of phi (golden ratio)
+And a custom one you can change in config.h, you get get your custom number by using
+./memory_trainer --constants "c" amount_of_digits
 
 ### Countries of the world
 

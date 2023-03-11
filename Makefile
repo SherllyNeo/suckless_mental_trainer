@@ -1,4 +1,4 @@
-mental_trainer: mental_trainer.c config.h games.h day_of_any_date.c doad_calc.h doad_calc.c
+mental_trainer: mental_trainer.c config.h games.h day_of_any_date.c doad_calc.h doad_calc.c cards.c constants.c
 	$(CC) mental_trainer.c config.h games.h doad_calc.h -g -std=gnu99 -o mental_trainer
 install:
 	cp -f mental_trainer /usr/local/bin

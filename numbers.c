@@ -46,7 +46,7 @@ void numbers_game(int amount_of_numbers, int length_of_time) {
 	}
 
 
-	print_string(random_string,LOCI_SIZE);
+	print_string(random_string,LOCI_SIZE_NUMBERS);
 
 
 	/* Clear screen */
@@ -73,7 +73,7 @@ void numbers_game(int amount_of_numbers, int length_of_time) {
 		char character_in_random_string = random_string[i];
 		char character_in_user_string = user_input[i];
 
-		if ( (i + 1) % (IMAGE_SIZE) == 0 ) {
+		if ( (i + 1) % (IMAGE_SIZE_NUMBERS) == 0 ) {
 
 			if (character_in_random_string == character_in_user_string) {
 				printf(ANSI_COLOR_GREEN "%c " ANSI_COLOR_RESET,character_in_random_string);
@@ -99,7 +99,7 @@ void numbers_game(int amount_of_numbers, int length_of_time) {
 
 
 	printf("\nHowever you wrote \n");
-	print_string(user_input,IMAGE_SIZE);
+	print_string(user_input,IMAGE_SIZE_NUMBERS);
 	 }
 
 

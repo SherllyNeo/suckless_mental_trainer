@@ -37,7 +37,23 @@ int main(int argc, char* argv[]) {
 		}
 		int amount_of_digits = atoi(argv[2]);
 		int length_of_time = atoi(argv[3]);
-		numbers_game(amount_of_digits,length_of_time);
+		cards_game(amount_of_digits,length_of_time);
+	}
+	else if (strcmp(mode,"--cards") == 0) {
+		if (argc < 2) {
+			exit(0);
+		}
+		int amount_of_digits = atoi(argv[2]);
+		int length_of_time = atoi(argv[3]);
+		cards_game(amount_of_digits,length_of_time);
+	}
+	else if (strcmp(mode,"--constants") == 0) {
+		if (argc < 2) {
+			exit(0);
+		}
+		char* constant_name = argv[2];
+		int amount_of_digits = atoi(argv[3]);
+		constants_game(constant_name,amount_of_digits);
 	}
 	else if ((strcmp(mode,"-h") == 0) || (strcmp(mode,"--h") == 0)) {
 	}
