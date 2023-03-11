@@ -55,6 +55,15 @@ int main(int argc, char* argv[]) {
 		int amount_of_digits = atoi(argv[3]);
 		constants_game(constant_name,amount_of_digits);
 	}
+	else if (strcmp(mode,"--calculator") == 0) {
+		if (argc < 3) {
+			exit(0);
+		}
+		int amount_of_digits = atoi(argv[2]);
+		char operation = *(argv[3]);
+		int length_of_time = atoi(argv[4]);
+		calculations_game(amount_of_digits,operation,length_of_time);
+	}
 	else if ((strcmp(mode,"-h") == 0) || (strcmp(mode,"--h") == 0)) {
 	}
 	else {
