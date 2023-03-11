@@ -55,11 +55,12 @@ example:
 
 12345 + 9182734
 
-### squares
-./memory_trainer --squares max_length_of_numbers length_of_time
 
-### cubes
-./memory_trainer --cubes max_length_of_numbers length_of_time
+the only valid operations are: +, /, *, ^, -
+
+### powers
+./memory_trainer --powers max_length_of_numbers base_to_raise_to length_of_time
+
 
 ## Blindfold chess
 ### Blindfold Knight games
