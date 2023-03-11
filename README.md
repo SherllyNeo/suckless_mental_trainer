@@ -45,7 +45,7 @@ And a custom one you can change in config.h, you get get your custom number by u
 ./memory_trainer --day_of_week
 optional -e to explain the different codes as you go
 
-Full tutorial can be found [here]("sherlly.org")
+Full tutorial can be found [on my blog]("https://sherlly.org/memory_cont/doad/")
 
 ### Lightning calculation
 ./memory_trainer --calculator max_length_of_numbers operation length_of_time
