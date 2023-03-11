@@ -36,9 +36,10 @@ And a custom one you can change in config.h, you get get your custom number by u
 ./memory_trainer --constants "c" amount_of_digits
 
 ### Countries of the world
+todo()!
 
 ### Periodic table
-
+todo()!
 
 ## Human calculator training
 ### Day of the week for any date calculation
@@ -60,8 +61,16 @@ the only valid operations are: +, /, *, ^, -
 
 ### powers
 ./memory_trainer --powers max_length_of_numbers base_to_raise_to length_of_time
+todo()!
 
 
 ## Blindfold chess
+todo()!
 ### Blindfold Knight games
+todo()!
 ### Colours of each square
+todo()!
+
+## Studying
+### flashcard app
+todo()!
