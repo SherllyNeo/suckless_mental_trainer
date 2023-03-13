@@ -8,15 +8,27 @@
 #include "chess.h"
 
 
-int validate_knight_move_with_queen(struct Chess_piece knight,struct Chess_piece queen,int xpos_new,int ypos_new) {
+
+
+int check_if_values_in_2D_array(int array[BOARD_AREA][2],int x, int y) {
+	for (int i; i<BOARD_AREA;++i) {
+		if (array[i][0] == x && array[i][1] == y) {
+			return 1;
+		}
+	}
+	return 0;
+}
+
+
+int validate_knight_move_with_previous_moves(struct Chess_piece knight,int previous_moves[BOARD_AREA][2],int xpos_new,int ypos_new) {
 	/* Go through each knight jump and see if xpos_new and ypos_new are possible */
-	int Xmoves[8] = {2, 1, -1, -2, -2, -1, 1, 2 };
-   	int Ymoves[8] = {1, 2, 2, 1, -1, -2, -2, -1 };
+	int Xmoves[8] = { 2, 1, -1, -2, -2, -1, 1, 2 };
+   	int Ymoves[8] = { 1, 2, 2, 1, -1, -2, -2, -1 };
 	int valid_knight_jump = 0;
-        for (int i = 0; i < 8; i++) {
+        for (int i = 1; i < 9; i++) {
 	      int x = knight.xpos + Xmoves[i];
 	      int y = knight.ypos + Ymoves[i];
-	      if (x>=1 && y>=1 && x<BOARD_WIDTH && y<BOARD_LENGTH){
+	      if (x>=1 && y>=1 && x<9 && y<9){
 		  if (x == xpos_new && y == ypos_new) {
 			  valid_knight_jump = 1;
 		  }
@@ -26,43 +38,39 @@ int validate_knight_move_with_queen(struct Chess_piece knight,struct Chess_piece
 		printf(ANSI_COLOR_RED "\nNot a valid knight move\n" ANSI_COLOR_RESET);
 		return 0;
 	}
-	/* If the knight is going to land on the queen, it is valid */
-	if ((xpos_new == queen.xpos) && (ypos_new == queen.ypos)) {
-		return 1;
-	}
-	/* Check the new position does not hit the queens sight */
-	if (xpos_new == queen.xpos || ypos_new == queen.ypos || abs(xpos_new-queen.xpos) == abs(queen.ypos-ypos_new)) {
-		printf(ANSI_COLOR_RED "\nThis move would hit the queen's line of sight\n" ANSI_COLOR_RESET);
+	if (check_if_values_in_2D_array(previous_moves,xpos_new,ypos_new)) {
 		return 0;
 	}
+	else {
+		return 1;
+	}
+
 	return -1;
 }
 
 
+void block_out_visited_square(int visited_squares[BOARD_AREA][2],int move_counter,int xpos,int ypos) {
+	visited_squares[move_counter][0] = xpos;
+	visited_squares[move_counter][0] = ypos;
+}
+
 /* TO DO - code solver and use it to check there is a possible solution */
 
 
-void blindknight_game() {
+void knighttour_game() {
 	char move[8];
 	int move_array[2];
 	struct Chess_piece knight;
-	struct Chess_piece queen;
+	int visited_squares[BOARD_AREA][2] = {0};
+
 	position_selection:
 	int xposition_knight = (rand() % BOARD_WIDTH) + 1;
 	int yposition_knight = (rand() % BOARD_LENGTH) + 1;
-	int xposition_queen = (rand() % BOARD_WIDTH) + 1;
-	int yposition_queen = (rand() % BOARD_LENGTH) + 1;
 
 	knight.xpos = xposition_knight;
 	knight.ypos = yposition_knight;
-	queen.xpos = xposition_queen;
-	queen.ypos = yposition_queen;
 
-	print_chess_positon(&queen,"Queen");
 	print_chess_positon(&knight,"Knight");
-	if ((knight.xpos == queen.xpos) && (knight.ypos == queen.ypos)) {
-		goto position_selection;
-	}
 	int move_counter = 0;
 	get_move:
 	printf("\nPlease input a knight move:\n");
@@ -73,16 +81,17 @@ void blindknight_game() {
 		printf(ANSI_COLOR_RED "\nNot a chess square\n" ANSI_COLOR_RESET);
 		goto get_move;
 	}
-	if (!validate_knight_move_with_queen(knight,queen,move_array[0],move_array[1])) {
+	if (!validate_knight_move_with_previous_moves(knight,visited_squares,move_array[0],move_array[1])) {
 		goto get_move;
 	}
+	block_out_visited_square(visited_squares,move_counter,knight.xpos,knight.ypos);
 	move_knight(&knight,move_array[0],move_array[1]);
 	++move_counter;
-	if (!((knight.xpos == queen.xpos) && (knight.ypos == queen.ypos))) {
+	if (visited_squares[BOARD_AREA-1][2] == 0) {
 		goto get_move;
 	}
 	else {
-		printf(ANSI_COLOR_GREEN "\nYou killed the queen in %d moves!\n" ANSI_COLOR_RESET,move_counter);
+		printf(ANSI_COLOR_GREEN "\nYou completed the tour!\n" ANSI_COLOR_RESET,move_counter);
 
 	}
 

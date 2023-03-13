@@ -10,6 +10,11 @@
 #define ANSI_COLOR_GREEN   "\x1b[32m"
 #define ANSI_COLOR_RESET   "\x1b[0m"
 
+/* chess board size - currently only 8x8 or smaller is supported */
+#define BOARD_LENGTH 8
+#define BOARD_WIDTH 8
+#define BOARD_AREA BOARD_LENGTH*BOARD_WIDTH
+
 
 
 /* constants */

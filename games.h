@@ -4,6 +4,7 @@
 #include "calculation.c"
 #include "day_of_any_date.c"
 #include "blind_knight.c"
+#include "knights_tour.c"
 
 /* memory games */
 void numbers_game(int amount_of_number, int length_of_time);
@@ -17,4 +18,5 @@ void calculations_game(int amount_of_digits, char operation, int length_of_time)
 
 /* Blindfold Visualtion games */
 void blindknight_game();
+void knighttour_game();
 
