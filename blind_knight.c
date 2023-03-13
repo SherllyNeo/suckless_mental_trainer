@@ -103,7 +103,7 @@ int validate_knight_move(struct Chess_piece knight,struct Chess_piece queen,int 
 		}
 	}
 	if (valid_knight_jump == 0) {
-		printf("\nNot a valid knight move\n");
+		printf(ANSI_COLOR_RED "\nNot a valid knight move\n" ANSI_COLOR_RESET);
 		return 0;
 	}
 	/* If the knight is going to land on the queen, it is valid */
@@ -112,7 +112,7 @@ int validate_knight_move(struct Chess_piece knight,struct Chess_piece queen,int 
 	}
 	/* Check the new position does not hit the queens sight */
 	if (xpos_new == queen.xpos || ypos_new == queen.ypos || abs(xpos_new-queen.xpos) == abs(queen.ypos-ypos_new)) {
-		printf("\nThis move would hit the queen's line of sight\n");
+		printf(ANSI_COLOR_RED "\nThis move would hit the queen's line of sight\n" ANSI_COLOR_RESET);
 		return 0;
 	}
 	return -1;
@@ -139,6 +139,7 @@ void move_knight(struct Chess_piece * knight,int xpos_new,int ypos_new) {
 	print_chess_positon(knight,"Knight");
 }
 
+/* TO DO - code solver and use it to check there is a possible solution */
 
 
 void blindknight_game() {
@@ -162,24 +163,26 @@ void blindknight_game() {
 	if ((knight.xpos == queen.xpos) && (knight.ypos == queen.ypos)) {
 		goto position_selection;
 	}
+	int move_counter = 0;
 	get_move:
 	printf("\nPlease input a knight move:\n");
 	memset(move,'\0',sizeof(move));
 	fgets(move,sizeof(move),stdin);
 	human_to_machine(move_array,move);
 	if (!validate_square_is_on_board(move_array[0],move_array[1])) {
-		printf("\nNot a chess square\n");
+		printf(ANSI_COLOR_RED "\nNot a chess square\n" ANSI_COLOR_RESET);
 		goto get_move;
 	}
 	if (!validate_knight_move(knight,queen,move_array[0],move_array[1])) {
 		goto get_move;
 	}
 	move_knight(&knight,move_array[0],move_array[1]);
+	++move_counter;
 	if (!((knight.xpos == queen.xpos) && (knight.ypos == queen.ypos))) {
 		goto get_move;
 	}
 	else {
-		printf("\nYou killed the queen!\n");
+		printf(ANSI_COLOR_GREEN "\nYou killed the queen in %d moves!\n" ANSI_COLOR_RESET,move_counter);
 
 	}
 
