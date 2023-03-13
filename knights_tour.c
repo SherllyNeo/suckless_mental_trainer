@@ -11,7 +11,7 @@
 
 
 int check_if_values_in_2D_array(int array[BOARD_AREA][2],int x, int y) {
-	for (int i; i<BOARD_AREA;++i) {
+	for (int i; i<=BOARD_AREA;++i) {
 		if (array[i][0] == x && array[i][1] == y) {
 			return 1;
 		}
@@ -39,6 +39,7 @@ int validate_knight_move_with_previous_moves(struct Chess_piece knight,int previ
 		return 0;
 	}
 	if (check_if_values_in_2D_array(previous_moves,xpos_new,ypos_new)) {
+		printf(ANSI_COLOR_RED "\nYou've been to that square before\n" ANSI_COLOR_RESET);
 		return 0;
 	}
 	else {
@@ -51,7 +52,7 @@ int validate_knight_move_with_previous_moves(struct Chess_piece knight,int previ
 
 void block_out_visited_square(int visited_squares[BOARD_AREA][2],int move_counter,int xpos,int ypos) {
 	visited_squares[move_counter][0] = xpos;
-	visited_squares[move_counter][0] = ypos;
+	visited_squares[move_counter][1] = ypos;
 }
 
 /* TO DO - code solver and use it to check there is a possible solution */
@@ -61,7 +62,8 @@ void knighttour_game() {
 	char move[8];
 	int move_array[2];
 	struct Chess_piece knight;
-	int visited_squares[BOARD_AREA][2] = {0};
+	int visited_squares[BOARD_AREA][2];
+	memset(visited_squares,0,sizeof(visited_squares));
 
 	position_selection:
 	int xposition_knight = (rand() % BOARD_WIDTH) + 1;
@@ -87,7 +89,7 @@ void knighttour_game() {
 	block_out_visited_square(visited_squares,move_counter,knight.xpos,knight.ypos);
 	move_knight(&knight,move_array[0],move_array[1]);
 	++move_counter;
-	if (visited_squares[BOARD_AREA-1][2] == 0) {
+	if (visited_squares[BOARD_AREA-1][1] == 0) {
 		goto get_move;
 	}
 	else {
