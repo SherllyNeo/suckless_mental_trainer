@@ -70,6 +70,9 @@ int main(int argc, char* argv[]) {
 	else if (strcmp(mode,"--knight_tour") == 0) {
 		knighttour_game();
 	}
+	else if (strcmp(mode,"--chess_squares") == 0) {
+		chesssquares_game();
+	}
 	else if ((strcmp(mode,"-h") == 0) || (strcmp(mode,"--h") == 0)) {
 	}
 	else {

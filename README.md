@@ -64,10 +64,12 @@ the only valid operations are: +, /, *, ^, -
 todo()!
 
 
-## Blindfold chess
-todo()!
+## Visualtion practice
+
 ### Blindfold Knight games
-todo()!
+./memory_trainer --blind_knight
+### Blindfold Knights tour
+./memory_trainer --knight_tour
 ### Colours of each square
 todo()!
 
