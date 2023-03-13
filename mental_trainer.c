@@ -64,6 +64,9 @@ int main(int argc, char* argv[]) {
 		int length_of_time = atoi(argv[4]);
 		calculations_game(amount_of_digits,operation,length_of_time);
 	}
+	else if (strcmp(mode,"--blind_knight") == 0) {
+		blindknight_game();
+	}
 	else if ((strcmp(mode,"-h") == 0) || (strcmp(mode,"--h") == 0)) {
 	}
 	else {
