@@ -64,6 +64,15 @@ int main(int argc, char* argv[]) {
 		int length_of_time = atoi(argv[4]);
 		calculations_game(amount_of_digits,operation,length_of_time);
 	}
+	else if (strcmp(mode,"--powers") == 0) {
+		if (argc < 3) {
+			exit(0);
+		}
+		int amount_of_digits = atoi(argv[2]);
+		int power = atoi(argv[3]);
+		int length_of_time = atoi(argv[4]);
+		powers_game(amount_of_digits,power,length_of_time);
+	}
 	else if (strcmp(mode,"--blind_knight") == 0) {
 		blindknight_game();
 	}

@@ -35,11 +35,10 @@ it is shipped with
 And a custom one you can change in config.h, you get get your custom number by using
 ./memory_trainer --constants "c" amount_of_digits
 
-### Countries of the world
-todo()!
+### General Knowledge
+./memory_trainer --knowledge "name_of_list"
 
-### Periodic table
-todo()!
+currently only supports countries, UK cities and perodic table
 
 ## Human calculator training
 ### Day of the week for any date calculation
@@ -61,7 +60,6 @@ the only valid operations are: +, /, *, ^, -
 
 ### powers
 ./memory_trainer --powers max_length_of_numbers base_to_raise_to length_of_time
-todo()!
 
 
 ## Visualtion practice

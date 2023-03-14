@@ -2,6 +2,7 @@
 #include "cards.c"
 #include "constants.c"
 #include "calculation.c"
+#include "powers.c"
 #include "day_of_any_date.c"
 #include "blind_knight.c"
 #include "knights_tour.c"
@@ -15,6 +16,7 @@ void constants_game(char* constant, int amount_of_digits);
 /* Calculation games */
 void doad_game(int explainer);
 void calculations_game(int amount_of_digits, char operation, int length_of_time);
+void powers_game(int amount_of_digits, int power, int length_of_time);
 
 
 /* Blindfold Visualtion games */

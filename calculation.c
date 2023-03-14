@@ -39,6 +39,7 @@ int random_number_1 = (rand() % max_number) + 1;
 int random_number_2 = (rand() % max_number) + 1;
 double result = calculate(random_number_1,random_number_2,operation);
 char user_input[50];
+printf("\nShowing for %d seconds\n",length_of_time);
 sleep(length_of_time);
 printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 printf("\nPlease type in the answer:\n");
