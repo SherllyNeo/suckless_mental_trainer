@@ -37,7 +37,7 @@ int main(int argc, char* argv[]) {
 		}
 		int amount_of_digits = atoi(argv[2]);
 		int length_of_time = atoi(argv[3]);
-		cards_game(amount_of_digits,length_of_time);
+		numbers_game(amount_of_digits,length_of_time);
 	}
 	else if (strcmp(mode,"--cards") == 0) {
 		if (argc < 2) {

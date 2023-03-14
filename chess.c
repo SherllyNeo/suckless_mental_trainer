@@ -12,74 +12,16 @@ struct Chess_piece {
 };
 
 
-int letter_to_number(char letter) {
+int letter_to_number(char letter_) {
 	int number;
-	switch(letter) {
-	case 'A':
-		number = 1;
-		break;
-	case 'B':
-		number = 2;
-		break;
-	case 'C':
-		number = 3;
-		break;
-	case 'D':
-		number = 4;
-		break;
-
-	case 'E':
-		number = 5;
-		break;
-	case 'F':
-		number = 6;
-		break;
-	case 'G':
-		number = 7;
-		break;
-	case 'H':
-		number = 8;
-		break;
-	default:
-		number = 0;
-		;;
-	}
-	return number;
+	char letter = toupper(letter_);
+	if (letter >= 'A' && letter <= 'Z')
+	  number = letter - 'A';
+	return (number + 1);
 }
 
 char number_to_letter(int number) {
-	char letter;
-	switch(number) {
-	case 1:
-		letter = 'A';
-		break;
-	case 2:
-		letter = 'B';
-		break;
-	case 3:
-		letter = 'C';
-		break;
-	case 4:
-		letter = 'D';
-		break;
-
-	case 5:
-		letter = 'E';
-		break;
-	case 6:
-		letter = 'F';
-		break;
-	case 7:
-		letter = 'G';
-		break;
-	case 8:
-		letter = 'H';
-		break;
-	default:
-		letter = '0';
-		;;
-	}
-	return letter;
+	return (number + 'A' - 1);
 }
 
 

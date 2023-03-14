@@ -71,7 +71,7 @@ todo()!
 ### Blindfold Knights tour
 ./memory_trainer --knight_tour
 ### Colours of each square
-todo()!
+./memory_trainer --chess_squares
 
 ## Studying
 ### flashcard app
