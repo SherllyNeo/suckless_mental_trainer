@@ -73,6 +73,13 @@ int main(int argc, char* argv[]) {
 		int length_of_time = atoi(argv[4]);
 		powers_game(amount_of_digits,power,length_of_time);
 	}
+	else if (strcmp(mode,"--knowledge") == 0) {
+		if (argc < 2) {
+			exit(0);
+		}
+		char* list_name = argv[2];
+		knowledge_game();
+	}
 	else if (strcmp(mode,"--blind_knight") == 0) {
 		blindknight_game();
 	}
