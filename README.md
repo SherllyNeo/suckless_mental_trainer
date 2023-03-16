@@ -1,4 +1,4 @@
-# Suckless mental trainer
+# Suckless mental trainer (smt)
 
 ## Introduction
 A suckless style mental trainer. Probably more bloated in features than other suckless software however I have been unable to find any satisficatory mental training software and wished to make my own.
