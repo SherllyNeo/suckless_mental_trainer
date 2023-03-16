@@ -12,12 +12,6 @@
 #define LOCI_SIZE_NUMBERS 6
 #define IMAGE_SIZE_NUMBERS 3
 
-/* If no arguements are provided for memorisation functions, these are used by default */
-#define DEFAULT_LENGTH 30
-#define DEFAULT_TIME 60
-
-
-
 /* chess board size - currently only 26x26 or smaller is supported */
 #define BOARD_LENGTH 8
 #define BOARD_WIDTH 8

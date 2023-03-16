@@ -94,6 +94,25 @@ int main(int argc, char* argv[]) {
 		flashcards_game();
 	}
 	else if ((strcmp(mode,"-h") == 0) || (strcmp(mode,"--h") == 0)) {
+		printf("\nPlease use format:\n");
+		printf("\nsmt --mode -options\n");
+		printf("\nFull documentation and tutorials can be found at: sherlly.org\n");
+		printf("\nUse config.h as settings\n\n");
+		printf("\navaliable modes are: \n");
+		printf("\n--numbers amount_of_digits length_of_time \n");
+		printf("\n--cards amount_of_cards length_of_time \n");
+		printf("\n--constants name_of_constant amount_of_digits (only supports pi, e, phi and c. c being a custom one you define in config.h\n");
+		printf("\n--countries_quiz\n");
+		printf("\n--day_of_week (an option -e to pre-calculate codes)\n");
+		printf("\n--calculator amount_of_digits operation length_of_time (supports +, /, *, ^, - )\n");
+		printf("\n--powers amount_of_digits exponent length_of_time\n");
+		printf("\n--blind_knight\n");
+		printf("\n--knight_tour\n");
+		printf("\n--chess_squares\n");
+		printf("\n--flashcards\n");
+		printf("\n\nexamples!\n\n");
+		printf("\n--numbers 30 60 \n");
+
 	}
 	else {
 		printf("\nI do not know that commnad, please type in --help or -h for a full menu\n");
