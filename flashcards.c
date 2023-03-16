@@ -354,7 +354,7 @@ void flashcards_game() {
 	}
 
 
-	printf("amount of flashcards in deck are: %d \n",amount_of_cards);
+	printf("\nThere are %d viable cards left in the deck\n",amount_of_cards);
 	sleep(1);
 
 
