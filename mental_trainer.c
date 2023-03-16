@@ -93,7 +93,7 @@ int main(int argc, char* argv[]) {
 	else if (strcmp(mode,"--flashcards") == 0) {
 		flashcards_game();
 	}
-	else if ((strcmp(mode,"-h") == 0) || (strcmp(mode,"--h") == 0)) {
+	else if ((strcmp(mode,"-h") == 0) || (strcmp(mode,"--help") == 0)) {
 		printf("\nPlease use format:\n");
 		printf("\nsmt --mode -options\n");
 		printf("\nFull documentation and tutorials can be found at: sherlly.org\n");
