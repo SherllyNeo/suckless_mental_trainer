@@ -3,6 +3,14 @@
 ## Introduction
 A suckless style mental trainer. Probably more bloated in features than other suckless software however I have been unable to find any satisficatory mental training software and wished to make my own.
 
+It is a tool to train your memory, mental calculation skills and visualisation skills.
+
+I had the goal of keeping this C project below 2000 LOC.
+
+Tutorials can be found on [sherlly.org](https://sherlly.org)
+
+
+
 ### Features
 This program has lots of features designed to help you train for memory competition, arithmetic competitions, blindfold chess and other intelligence events.
 
