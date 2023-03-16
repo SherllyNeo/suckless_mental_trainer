@@ -88,7 +88,7 @@ void print_flashcard(struct flashcard flash_card) {
 char* flashcard_to_string(struct flashcard flash_card) {
 	char *buf;
 	size_t sz;
-	//time to string
+	/* time to string */
 	time_t time = flash_card.lastseen;
 	struct tm *tm = localtime(&time);
 	static char time_string[50];
@@ -404,7 +404,7 @@ void flashcards_game() {
 		delay_value = 0;
  	}
 	sleep(1);
-      //write to file
+	/* Save flashcard to deck file */
         time_t today = time(NULL);
   	chosen_card.lastseen = today;
   	chosen_card.delay = delay_value;
