@@ -319,7 +319,7 @@ void flashcards_game() {
 
 	/* Set path to deck csv file */
 	char deck_path[1024];
-    	sprintf(deck_path,"%s/.local/share/flashcards/%s",home,filesList[user_choice]);
+    	sprintf(deck_path,"%s/%s/%s",home,FLASHCARD_FOLDER,filesList[user_choice]);
 
 
 	char* choice;

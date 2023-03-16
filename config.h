@@ -14,8 +14,8 @@
 #define BOARD_WIDTH 8
 #define BOARD_AREA BOARD_LENGTH*BOARD_WIDTH
 
-/* Flashcard path */
-#define FLASHCARD_FOLDER "./flashcards"
+/* Flashcard path - this will be from your $HOME file*/
+#define FLASHCARD_FOLDER "git/suckless/suckless_mental_trainer/flashcards"
 
 
 
