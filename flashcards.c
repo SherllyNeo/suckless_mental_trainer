@@ -337,6 +337,10 @@ void flashcards_game() {
 
 	/* Load in all lines of csv as an array of structs, discard all of the invalid structs, then check length of array */
 	flashcard_array = csv_to_flashcard_array(deck_path,&amount_of_cards);
+	if (amount_of_cards == 0) {
+		printf("\nThere are no cards in this deck (csv file)\n");
+		exit(0);
+	}
 	int original_amount = amount_of_cards;
 	for (int i = 0; i<original_amount;++i) {
 		time_t lastseen_for_card = flashcard_array[i].lastseen;
