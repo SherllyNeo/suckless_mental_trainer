@@ -1,3 +1,4 @@
+#define _XOPEN_SOURCE 700
 #include "numbers.c"
 #include "cards.c"
 #include "constants.c"
@@ -8,6 +9,7 @@
 #include "knights_tour.c"
 #include "squares.c"
 #include "knowledge.c"
+#include "flashcards.c"
 
 /* memory games */
 void numbers_game(int amount_of_number, int length_of_time);
@@ -28,4 +30,5 @@ void knighttour_game();
 void chessquares_game();
 
 /* Studying  */
+void flashcards_game();
 

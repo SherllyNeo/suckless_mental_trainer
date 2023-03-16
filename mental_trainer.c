@@ -1,3 +1,4 @@
+#define _XOPEN_SOURCE  700
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -89,18 +90,15 @@ int main(int argc, char* argv[]) {
 	else if (strcmp(mode,"--chess_squares") == 0) {
 		chesssquares_game();
 	}
+	else if (strcmp(mode,"--flashcards") == 0) {
+		flashcards_game();
+	}
 	else if ((strcmp(mode,"-h") == 0) || (strcmp(mode,"--h") == 0)) {
 	}
 	else {
 		printf("\nI do not know that commnad, please type in --help or -h for a full menu\n");
 	}
 
-
-
-
-
-
-
-	return 0;
+	 return 0;
 }
 
