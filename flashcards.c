@@ -322,6 +322,8 @@ void flashcards_game() {
     	sprintf(deck_path,"%s/%s/%s",home,FLASHCARD_FOLDER,filesList[user_choice]);
 
 
+
+
 	char* choice;
 	struct flashcard chosen_card;
 	int random_index;
@@ -399,17 +401,15 @@ void flashcards_game() {
   	chosen_card.lastseen = today;
   	chosen_card.delay = delay_value;
 	char* string_of_new_card = flashcard_to_string(chosen_card);
-	if (change_line_of_csv(deck_path,string_of_new_card,chosen_card.id)) {
+	if (!change_line_of_csv(deck_path,string_of_new_card,chosen_card.id)) {
+		printf("\ncould not update your file with current date and info\n");
+	}
 	/* clean up */
 	free(string_of_new_card);
+	free(flashcard_array);
 
-	goto choice;
-	}
-	else {
-		printf("\ncould not update your file with current date and info\n");
-		free(string_of_new_card);
-	        goto choice;
-	}
+
+	 goto choice;
 
 };
 
