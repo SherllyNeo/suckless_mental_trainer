@@ -15,7 +15,7 @@
 #define BOARD_AREA BOARD_LENGTH*BOARD_WIDTH
 
 /* Flashcard path */
-#define FLASHCARD_FOLDER ".local/share/flashcards"
+#define FLASHCARD_FOLDER "./flashcards"
 
 
 

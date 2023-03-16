@@ -73,4 +73,16 @@ the only valid operations are: +, /, *, ^, -
 
 ## Studying
 ### flashcard app
-todo()!
+./memory_trainer --flashcards
+
+This is a flashcard app, similar to Anki
+
+It encourages spaced repition. If you get a question right, it will give you time before showing that card again.
+
+You can set the file path to the "flashcard deck" yourself in config.h
+
+The deck itself is a csv in the format
+
+- question, answer,date in YYYY-MM-DD format,0
+Example csv can be found in the flashcards
+history.csv
