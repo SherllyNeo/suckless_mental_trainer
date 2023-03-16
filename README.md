@@ -49,10 +49,10 @@ it is shipped with
 And a custom one you can change in config.h, you get get your custom number by using
 ./memory_trainer --constants "c" amount_of_digits
 
-### General Knowledge
-./memory_trainer --knowledge "name_of_list"
+### Countries quiz
+./memory_trainer --countries_quiz
 
-currently only supports countries, UK cities and perodic table
+You type in all the countries in the world, it'll show you the captial for each before ticking it off the list. Once you've done all the countries, it'll say well done.
 
 ## Human calculator training
 ### Day of the week for any date calculation
