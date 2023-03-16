@@ -8,7 +8,7 @@
 #include "blind_knight.c"
 #include "knights_tour.c"
 #include "squares.c"
-#include "knowledge.c"
+#include "countries.c"
 #include "flashcards.c"
 
 /* memory games */
@@ -16,7 +16,7 @@ void numbers_game(int amount_of_number, int length_of_time);
 void cards_game(int amount_of_cards, int length_of_time);
 void constants_game(char* constant, int amount_of_digits);
 void constants_game(char* constant, int amount_of_digits);
-void knowledge_game();
+void country_game();
 
 /* Calculation games */
 void doad_game(int explainer);

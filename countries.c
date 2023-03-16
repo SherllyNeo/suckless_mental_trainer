@@ -217,3 +217,26 @@ struct Country countries[COUNTRIES_AMOUNT] = {
  };
 
 
+void country_game() {
+char user_input[100];
+int length = sizeof(countries)/sizeof(countries[0]);
+int length_after_filter;
+while ( length != 0) {
+	memset(user_input,'\0',sizeof(user_input));
+	get_user_guess:
+	printf("\nPlease type in a country name:\n");
+	fgets(user_input,sizeof(user_input),stdin);
+	length_after_filter = filter_countries(user_input,countries,length);
+	if (length_after_filter == length) {
+		printf(ANSI_COLOR_RED "\nNot a country\n" ANSI_COLOR_RESET);
+		goto get_user_guess;
+	}
+	length = length_after_filter;
+	for (int i =0;i<length;++i) {
+	}
+}
+	printf(ANSI_COLOR_GREEN "\nWell done you got all the countries!\n" ANSI_COLOR_RESET);
+
+
+}
+

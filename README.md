@@ -9,7 +9,13 @@ I had the goal of keeping this C project below 2000 LOC.
 
 Tutorials can be found on [sherlly.org](https://sherlly.org)
 
+## Philosophy
 
+This is software aimed towards advance computer users and advanced mental athletes.
+
+It is designed to literally suck less than other brain training apps on the market, both being open source and well written.
+
+While feature rich, it is performant and written in C.
 
 ### Features
 This program has lots of features designed to help you train for memory competition, arithmetic competitions, blindfold chess and other intelligence events.
