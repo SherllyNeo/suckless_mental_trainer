@@ -23,7 +23,8 @@ struct flashcard {
 };
 
 struct flashcard* csv_to_flashcard_array(char* flashcard_deck,int* p_amount_of_cards) {
-    struct flashcard* flashcard_array = malloc(5*sizeof(flashcard_array));
+    int size_of_flashcard_array = 50;
+    struct flashcard* flashcard_array = malloc(size_of_flashcard_array*sizeof(struct flashcard));
     char buffer[MAX_SIZE];
     FILE *deck = NULL;
     int flag = 0;
@@ -65,7 +66,10 @@ struct flashcard* csv_to_flashcard_array(char* flashcard_deck,int* p_amount_of_c
             token = strtok(NULL, ",");
         }
 	/* append to flashcard array  */
-	flashcard_array = realloc(flashcard_array,(lines+1)*sizeof(struct flashcard));
+	if (lines>=size_of_flashcard_array) {
+		size_of_flashcard_array*=2;
+		flashcard_array = realloc(flashcard_array,size_of_flashcard_array*sizeof(struct flashcard));
+	}
 	tmp_flashcard.id = (lines+1);
 	flashcard_array[lines] = tmp_flashcard;
 	++lines;
