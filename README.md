@@ -20,7 +20,7 @@ While feature rich, it is performant and written in C.
 ### Features
 This program has lots of features designed to help you train for memory competition, arithmetic competitions, blindfold chess and other intelligence events.
 
-A mental trainer with usage ./mental_trainer --mode
+A mental trainer with usage smt --mode
 then game options
 
 This will colour code your errors
@@ -28,13 +28,13 @@ This will colour code your errors
 
 ## Memory training
 ### Numbers
-./memory_trainer --numbers amount_of_digits length_of_time
+smt --numbers amount_of_digits length_of_time
 
 ### Cards
-./memory_trainer --numbers amount_of_cards length_of_time
+smt --numbers amount_of_cards length_of_time
 
 ### constants (such as pi, e)
-./memory_trainer --constants "constant_name" amount_of_digits
+smt --constants "constant_name" amount_of_digits
 
 This will ask you to input that many digits then compare at the end.
 
@@ -47,25 +47,25 @@ it is shipped with
 1000 digits of phi (golden ratio)
 
 And a custom one you can change in config.h, you get get your custom number by using
-./memory_trainer --constants "c" amount_of_digits
+smt --constants "c" amount_of_digits
 
 ### Countries quiz
-./memory_trainer --countries_quiz
+smt --countries_quiz
 
 You type in all the countries in the world, it'll show you the captial for each before ticking it off the list. Once you've done all the countries, it'll say well done.
 
 ## Human calculator training
 ### Day of the week for any date calculation
-./memory_trainer --day_of_week
+smt --day_of_week
 optional -e to explain the different codes as you go
 
 Full tutorial can be found here: https://sherlly.org/memory_cont/doad
 
 ### Lightning calculation
-./memory_trainer --calculator max_length_of_numbers operation length_of_time
+smt --calculator max_length_of_numbers operation length_of_time
 
 example:
-./memory_trainer --calculator 7 + 3
+smt --calculator 7 + 3
 
 12345 + 9182734
 
@@ -73,21 +73,21 @@ example:
 the only valid operations are: +, /, *, ^, -
 
 ### powers
-./memory_trainer --powers max_length_of_numbers base_to_raise_to length_of_time
+smt --powers max_length_of_numbers base_to_raise_to length_of_time
 
 
 ## Visualtion practice
 
 ### Blindfold Knight games
-./memory_trainer --blind_knight
+smt --blind_knight
 ### Blindfold Knights tour
-./memory_trainer --knight_tour
+smt --knight_tour
 ### Colours of each square
-./memory_trainer --chess_squares
+smt --chess_squares
 
 ## Studying
 ### flashcard app
-./memory_trainer --flashcards
+smt --flashcards
 
 This is a flashcard app, similar to Anki
 
