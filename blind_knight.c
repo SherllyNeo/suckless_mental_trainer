@@ -8,6 +8,7 @@
 #include "chess.h"
 
 
+
 int validate_knight_move_with_queen(struct Chess_piece knight,struct Chess_piece queen,int xpos_new,int ypos_new) {
 	int valid_knight_jump = check_valid_knight_jump(knight,xpos_new,ypos_new);
 	if (valid_knight_jump == 0) {
@@ -25,10 +26,102 @@ int validate_knight_move_with_queen(struct Chess_piece knight,struct Chess_piece
 	}
 	return -1;
 }
+int validate_knight_move_with_queen_silent(struct Chess_piece knight,struct Chess_piece queen,int xpos_new,int ypos_new) {
+	int valid_knight_jump = check_valid_knight_jump(knight,xpos_new,ypos_new);
+	if (valid_knight_jump == 0) {
+		return 0;
+	}
+	/* If the knight is going to land on the queen, it is valid */
+	if ((xpos_new == queen.xpos) && (ypos_new == queen.ypos)) {
+		return 1;
+	}
+	/* Check the new position does not hit the queens sight */
+	if (xpos_new == queen.xpos || ypos_new == queen.ypos || abs(xpos_new-queen.xpos) == abs(queen.ypos-ypos_new)) {
+		return 0;
+	}
+	return -1;
+}
+
+int generate_all_possible_knight_moves_with_queen(struct Chess_piece knight,struct Chess_piece queen,int moves_array[8][2]) {
+	/* Go through each knight jump and append to array */
+	int array_size = 0;
+	int Xmoves[8] = { 2, 1, -1, -2, -2, -1, 1, 2 };
+   	int Ymoves[8] = { 1, 2, 2, 1, -1, -2, -2, -1 };
+	int valid_knight_jump = 0;
+        for (int i = 0; i < 9; i++) {
+	      int x = knight.xpos + Xmoves[i];
+	      int y = knight.ypos + Ymoves[i];
+	      if (x>=1 && y>=1 && x<(BOARD_WIDTH+1) && y<(BOARD_LENGTH+1) ){
+	if (validate_square_is_on_board(x,y)) {
+
+	if (validate_knight_move_with_queen_silent(knight,queen,x,y)) {
+		      moves_array[array_size][0] = x;
+		      moves_array[array_size][1] = y;
+		      ++array_size;
+	}
+	}
+
+		}
+	}
+	return array_size;
+}
 
 
-/* TO DO - code solver and use it to check there is a possible solution */
+int blindknight_game_solved(int xposition_knight,int yposition_knight,int xposition_queen, int yposition_queen) {
+	char move[8];
+	struct Chess_piece knight;
+	struct Chess_piece queen;
+	position_selection:
+	knight.xpos = xposition_knight;
+	knight.ypos = yposition_knight;
+	queen.xpos = xposition_queen;
+	queen.ypos = yposition_queen;
+	int moves_array[8][2];
+	int distance[8];
+	float minimum_distance = 1000;
+	int moves = 1;
 
+	/* Generate all possible moves into an array */
+	int amount_of_moves = generate_all_possible_knight_moves_with_queen(knight,queen,moves_array);
+	if (amount_of_moves == 0) {
+		return -1;
+	}
+	/* Repeat until we win */
+	find_best_move:
+	amount_of_moves = generate_all_possible_knight_moves_with_queen(knight,queen,moves_array);
+	for (int i = 0; i<amount_of_moves; ++i) {
+		int xnew = moves_array[i][0];
+		int ynew = moves_array[i][1];
+	}
+
+
+	int xmin;
+	int ymin;
+	for (int i = 0; i<amount_of_moves; ++i) {
+		int xnew = moves_array[i][0];
+		int ynew = moves_array[i][1];
+
+		/* Check if win */
+		if ((xnew == queen.xpos) && (ynew == queen.ypos)) {
+			xmin = xnew;
+			ymin = ynew;
+			return moves;
+		}
+		/* Check if shorter distance than current global */
+		float distance = sqrt(pow((float)queen.xpos - (float)xnew,2) + pow((float)queen.xpos - (float)ynew,2));
+		if (distance<minimum_distance) {
+		 	minimum_distance = distance;
+			xmin = xnew;
+			ymin = ynew;
+		}
+
+	}
+	moves++;
+	knight.xpos = xmin;
+	knight.ypos = ymin;
+	goto find_best_move;
+
+}
 
 void blindknight_game() {
 	char move[8];
@@ -46,12 +139,16 @@ void blindknight_game() {
 	queen.xpos = xposition_queen;
 	queen.ypos = yposition_queen;
 
-	print_chess_positon(&queen,"Queen");
-	print_chess_positon(&knight,"Knight");
 	if ((knight.xpos == queen.xpos) && (knight.ypos == queen.ypos)) {
 		goto position_selection;
 	}
 	int move_counter = 0;
+	int amount_of_moves_to_solve = blindknight_game_solved(xposition_knight,yposition_knight,xposition_queen,yposition_queen);
+	if (amount_of_moves_to_solve == -1) {
+		goto position_selection;
+	}
+	print_chess_positon(&queen,"Queen");
+	print_chess_positon(&knight,"Knight");
 	get_move:
 	printf("\nPlease input a knight move:\n");
 	memset(move,'\0',sizeof(move));
@@ -70,7 +167,12 @@ void blindknight_game() {
 		goto get_move;
 	}
 	else {
-		printf(ANSI_COLOR_GREEN "\nYou killed the queen in %d moves!\n" ANSI_COLOR_RESET,move_counter);
+		if (move_counter<=amount_of_moves_to_solve) {
+			printf(ANSI_COLOR_GREEN "\nYou killed the queen in %d moves! The optimal amount of moves\n" ANSI_COLOR_RESET,move_counter);
+		}
+		else {
+			printf(ANSI_COLOR_GREEN "\nYou killed the queen in %d moves! The optimal amount of moves was %d\n" ANSI_COLOR_RESET,move_counter,amount_of_moves_to_solve);
+		}
 
 	}
 

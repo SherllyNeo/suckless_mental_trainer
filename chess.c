@@ -44,6 +44,26 @@ void print_chess_positon(struct Chess_piece * piece, char* name) {
 	printf("\n%s is at %c%d\n",name,letter,number);
 }
 
+
+int generate_all_possible_knight_moves(struct Chess_piece knight,int moves_array[8][2]) {
+	/* Go through each knight jump and append to array */
+	int array_size = 0;
+	int Xmoves[8] = { 2, 1, -1, -2, -2, -1, 1, 2 };
+   	int Ymoves[8] = { 1, 2, 2, 1, -1, -2, -2, -1 };
+	int valid_knight_jump = 0;
+        for (int i = 0; i < 9; i++) {
+	      int x = knight.xpos + Xmoves[i];
+	      int y = knight.ypos + Ymoves[i];
+	      if (x>=1 && y>=1 && x<(BOARD_WIDTH+1) && y<(BOARD_LENGTH+1) ){
+		      moves_array[array_size][0] = x;
+		      moves_array[array_size][1] = y;
+		      ++array_size;
+		}
+	}
+	return array_size;
+}
+
+
 int check_valid_knight_jump(struct Chess_piece knight,int xpos_new,int ypos_new) {
 	/* Go through each knight jump and see if xpos_new and ypos_new are possible */
 	int Xmoves[8] = { 2, 1, -1, -2, -2, -1, 1, 2 };
@@ -69,5 +89,10 @@ void move_knight(struct Chess_piece * knight,int xpos_new,int ypos_new) {
 	knight->ypos = ypos_new;
 	printf("\nPosition of knight updated\n");
 	print_chess_positon(knight,"Knight");
+}
+
+void move_knight_silent(struct Chess_piece * knight,int xpos_new,int ypos_new) {
+	knight->xpos = xpos_new;
+	knight->ypos = ypos_new;
 }
 
