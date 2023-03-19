@@ -44,6 +44,26 @@ void print_chess_positon(struct Chess_piece * piece, char* name) {
 	printf("\n%s is at %c%d\n",name,letter,number);
 }
 
+int check_valid_knight_jump(struct Chess_piece knight,int xpos_new,int ypos_new) {
+	/* Go through each knight jump and see if xpos_new and ypos_new are possible */
+	int Xmoves[8] = { 2, 1, -1, -2, -2, -1, 1, 2 };
+   	int Ymoves[8] = { 1, 2, 2, 1, -1, -2, -2, -1 };
+	int valid_knight_jump = 0;
+        for (int i = 0; i < 9; i++) {
+	      int x = knight.xpos + Xmoves[i];
+	      int y = knight.ypos + Ymoves[i];
+	      if (x>=1 && y>=1 && x<(BOARD_WIDTH+1) && y<(BOARD_LENGTH+1) ){
+		  if (x == xpos_new && y == ypos_new) {
+			  valid_knight_jump = 1;
+		  }
+		}
+	}
+	return valid_knight_jump;
+
+}
+
+
+
 void move_knight(struct Chess_piece * knight,int xpos_new,int ypos_new) {
 	knight->xpos = xpos_new;
 	knight->ypos = ypos_new;

@@ -27,6 +27,7 @@ void powers_game(int amount_of_digits, int power, int length_of_time);
 /* Blindfold Visualtion games */
 void blindknight_game();
 void knighttour_game();
+void knighttour_game_solved();
 void chessquares_game();
 
 /* Studying  */

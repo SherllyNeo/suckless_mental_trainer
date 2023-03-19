@@ -9,19 +9,7 @@
 
 
 int validate_knight_move_with_queen(struct Chess_piece knight,struct Chess_piece queen,int xpos_new,int ypos_new) {
-	/* Go through each knight jump and see if xpos_new and ypos_new are possible */
-	int Xmoves[8] = {2, 1, -1, -2, -2, -1, 1, 2 };
-   	int Ymoves[8] = {1, 2, 2, 1, -1, -2, -2, -1 };
-	int valid_knight_jump = 0;
-        for (int i = 0; i < 8; i++) {
-	      int x = knight.xpos + Xmoves[i];
-	      int y = knight.ypos + Ymoves[i];
-	      if (x>=1 && y>=1 && x<BOARD_WIDTH && y<BOARD_LENGTH){
-		  if (x == xpos_new && y == ypos_new) {
-			  valid_knight_jump = 1;
-		  }
-		}
-	}
+	int valid_knight_jump = check_valid_knight_jump(knight,xpos_new,ypos_new);
 	if (valid_knight_jump == 0) {
 		printf(ANSI_COLOR_RED "\nNot a valid knight move\n" ANSI_COLOR_RESET);
 		return 0;

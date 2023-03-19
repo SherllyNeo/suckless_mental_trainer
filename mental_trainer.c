@@ -85,6 +85,15 @@ int main(int argc, char* argv[]) {
 		blindknight_game();
 	}
 	else if (strcmp(mode,"--knight_tour") == 0) {
+		if (argc > 1) {
+		char* if_solve = argv[2];
+		if (strcmp(if_solve,"-s") == 0) {
+		knighttour_game_solved();
+		}
+		else {
+		knighttour_game();
+		}
+		}
 		knighttour_game();
 	}
 	else if (strcmp(mode,"--chess_squares") == 0) {
