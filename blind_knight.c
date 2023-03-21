@@ -67,48 +67,38 @@ int generate_all_possible_knight_moves_with_queen(struct Chess_piece knight,stru
 }
 
 
-int blindknight_game_solved(int xposition_knight,int yposition_knight,int xposition_queen, int yposition_queen) {
+int blindknight_game_solved(struct Chess_piece knight, struct Chess_piece queen) {
 	char move[8];
-	struct Chess_piece knight;
-	struct Chess_piece queen;
 	position_selection:
-	knight.xpos = xposition_knight;
-	knight.ypos = yposition_knight;
-	queen.xpos = xposition_queen;
-	queen.ypos = yposition_queen;
 	int moves_array[8][2];
 	int distance[8];
 	float minimum_distance = 1000;
-	int moves = 1;
+	int moves = 0;
 
 	/* Generate all possible moves into an array */
 	int amount_of_moves = generate_all_possible_knight_moves_with_queen(knight,queen,moves_array);
 	if (amount_of_moves == 0) {
 		return -1;
 	}
+	int xnew = 0;
+	int ynew = 0;
+	int visited_array[30][2];
 	/* Repeat until we win */
-	find_best_move:
+	while (!( (queen.xpos == knight.xpos) && (queen.ypos == knight.ypos) )) {
 	amount_of_moves = generate_all_possible_knight_moves_with_queen(knight,queen,moves_array);
 	for (int i = 0; i<amount_of_moves; ++i) {
-		int xnew = moves_array[i][0];
-		int ynew = moves_array[i][1];
+		xnew = moves_array[i][0];
+		ynew = moves_array[i][1];
+
 	}
-
-
 	int xmin;
 	int ymin;
 	for (int i = 0; i<amount_of_moves; ++i) {
-		int xnew = moves_array[i][0];
-		int ynew = moves_array[i][1];
+		xnew = moves_array[i][0];
+		ynew = moves_array[i][1];
 
-		/* Check if win */
-		if ((xnew == queen.xpos) && (ynew == queen.ypos)) {
-			xmin = xnew;
-			ymin = ynew;
-			return moves;
-		}
 		/* Check if shorter distance than current global */
-		float distance = sqrt(pow((float)queen.xpos - (float)xnew,2) + pow((float)queen.xpos - (float)ynew,2));
+		float distance = sqrt(pow(queen.xpos - xnew,2) + pow(queen.ypos - ynew,2));
 		if (distance<minimum_distance) {
 		 	minimum_distance = distance;
 			xmin = xnew;
@@ -119,7 +109,12 @@ int blindknight_game_solved(int xposition_knight,int yposition_knight,int xposit
 	moves++;
 	knight.xpos = xmin;
 	knight.ypos = ymin;
-	goto find_best_move;
+	/* Reset minimum distance */
+	minimum_distance = 1000;
+	}
+
+	return moves;
+
 
 }
 
@@ -143,7 +138,8 @@ void blindknight_game() {
 		goto position_selection;
 	}
 	int move_counter = 0;
-	int amount_of_moves_to_solve = blindknight_game_solved(xposition_knight,yposition_knight,xposition_queen,yposition_queen);
+	int amount_of_moves_to_solve = blindknight_game_solved(knight,queen);
+	printf("\nThis can be done in %d moves\n",amount_of_moves_to_solve);
 	if (amount_of_moves_to_solve == -1) {
 		goto position_selection;
 	}

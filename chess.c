@@ -43,6 +43,11 @@ void print_chess_positon(struct Chess_piece * piece, char* name) {
 	char letter = number_to_letter(letter_i);
 	printf("\n%s is at %c%d\n",name,letter,number);
 }
+void print_chess_square(int x, int y) {
+	int number = y;
+	char letter = number_to_letter(x);
+	printf("\nsquare %c%d\n",letter,number);
+}
 
 
 int generate_all_possible_knight_moves(struct Chess_piece knight,int moves_array[8][2]) {
