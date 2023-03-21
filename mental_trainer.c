@@ -126,6 +126,8 @@ int main(int argc, char* argv[]) {
 		printf("\n--cards amount_of_cards length_of_time \n");
 		printf("\n--constants name_of_constant amount_of_digits (only supports pi, e, phi and c. c being a custom one you define in config.h\n");
 		printf("\n--countries_quiz\n");
+		printf("\n--elements_quiz\n");
+		printf("\n--primes_quiz\n");
 		printf("\n--day_of_week (an option -e to pre-calculate codes)\n");
 		printf("\n--calculator amount_of_digits operation length_of_time (supports +, /, *, ^, - )\n");
 		printf("\n--powers amount_of_digits exponent length_of_time\n");
