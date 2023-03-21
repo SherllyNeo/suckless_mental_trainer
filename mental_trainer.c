@@ -81,6 +81,20 @@ int main(int argc, char* argv[]) {
 		char* list_name = argv[2];
 		country_game();
 	}
+	else if (strcmp(mode,"--elements_quiz") == 0) {
+		if (argc < 2) {
+			exit(0);
+		}
+		char* list_name = argv[2];
+		elements_game();
+	}
+	else if (strcmp(mode,"--primes_quiz") == 0) {
+		if (argc < 2) {
+			exit(0);
+		}
+		char* list_name = argv[2];
+		primes_game();
+	}
 	else if (strcmp(mode,"--blind_knight") == 0) {
 		blindknight_game();
 	}

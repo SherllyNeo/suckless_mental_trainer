@@ -10,6 +10,7 @@
 #include "squares.c"
 #include "countries.c"
 #include "elements.c"
+#include "primes.c"
 #include "flashcards.c"
 
 /* memory games */
@@ -19,6 +20,7 @@ void constants_game(char* constant, int amount_of_digits);
 void constants_game(char* constant, int amount_of_digits);
 void country_game();
 void elements_game();
+void primes_game();
 
 /* Calculation games */
 void doad_game(int explainer);
