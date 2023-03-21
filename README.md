@@ -54,6 +54,17 @@ smt --countries_quiz
 
 You type in all the countries in the world, it'll show you the captial for each before ticking it off the list. Once you've done all the countries, it'll say well done.
 
+### Elements quiz
+smt --elements_quiz
+
+You type in all the elements in the periodic table, it'll show you the atomic mass and atomic number for each before ticking it off the list. Once you've done all the elements, it'll say well done.
+
+### primes quiz
+smt --primes_quiz
+
+You type in all the primes up to 1000, once done it'll say well done.
+
+
 ## Human calculator training
 ### Day of the week for any date calculation
 smt --day_of_week
