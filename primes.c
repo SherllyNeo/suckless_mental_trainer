@@ -1,4 +1,3 @@
-
 #define PRIMES_AMOUNT 166
 
 int filter_primes(int user_guess,int list[PRIMES_AMOUNT],int length) {

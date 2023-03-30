@@ -9,6 +9,7 @@
 #include "knights_tour.c"
 #include "squares.c"
 #include "countries.c"
+#include "cities.c"
 #include "elements.c"
 #include "primes.c"
 #include "flashcards.c"
@@ -21,6 +22,7 @@ void constants_game(char* constant, int amount_of_digits);
 void country_game();
 void elements_game();
 void primes_game();
+void city_game();
 
 /* Calculation games */
 void doad_game(int explainer);
