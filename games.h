@@ -10,6 +10,7 @@
 #include "squares.c"
 #include "countries.c"
 #include "cities.c"
+#include "states.c"
 #include "elements.c"
 #include "primes.c"
 #include "flashcards.c"
@@ -23,6 +24,7 @@ void country_game();
 void elements_game();
 void primes_game();
 void city_game();
+void state_game();
 
 /* Calculation games */
 void doad_game(int explainer);

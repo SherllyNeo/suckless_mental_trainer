@@ -78,28 +78,30 @@ int main(int argc, char* argv[]) {
 		if (argc < 2) {
 			exit(0);
 		}
-		char* list_name = argv[2];
 		country_game();
 	}
 	else if (strcmp(mode,"--cities_quiz") == 0) {
 		if (argc < 2) {
 			exit(0);
 		}
-		char* list_name = argv[2];
 		city_game();
+	}
+	else if (strcmp(mode,"--states_quiz") == 0) {
+		if (argc < 2) {
+			exit(0);
+		}
+		state_game();
 	}
 	else if (strcmp(mode,"--elements_quiz") == 0) {
 		if (argc < 2) {
 			exit(0);
 		}
-		char* list_name = argv[2];
 		elements_game();
 	}
 	else if (strcmp(mode,"--primes_quiz") == 0) {
 		if (argc < 2) {
 			exit(0);
 		}
-		char* list_name = argv[2];
 		primes_game();
 	}
 	else if (strcmp(mode,"--blind_knight") == 0) {
