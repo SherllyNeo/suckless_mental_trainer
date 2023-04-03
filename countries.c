@@ -220,6 +220,7 @@ struct Country countries[COUNTRIES_AMOUNT] = {
 void country_game() {
 char user_input[100];
 int length = sizeof(countries)/sizeof(countries[0]);
+int og_length = sizeof(countries)/sizeof(countries[0]);
 int length_after_filter;
 while ( length != 0) {
 	memset(user_input,'\0',sizeof(user_input));
@@ -232,8 +233,7 @@ while ( length != 0) {
 		goto get_user_guess;
 	}
 	length = length_after_filter;
-	for (int i =0;i<length;++i) {
-	}
+	printf("\nyou have done %d/%d\n",og_length-length,og_length);
 }
 	printf(ANSI_COLOR_GREEN "\nWell done you got all the countries!\n" ANSI_COLOR_RESET);
 

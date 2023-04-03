@@ -44,6 +44,7 @@ for (int i=0; i<1000; ++i) {
 
 char user_input[100];
 int length = sizeof(primes)/sizeof(primes[0]);
+int og_length = sizeof(primes)/sizeof(primes[0]);
 int length_after_filter;
 while ( length != 0) {
 	memset(user_input,'\0',sizeof(user_input));
@@ -53,12 +54,11 @@ while ( length != 0) {
 	int user_guess = atoi(user_input);
 	length_after_filter = filter_primes(user_guess,primes,length);
 	if (length_after_filter == length) {
-		printf(ANSI_COLOR_RED "\nNot a prime\n" ANSI_COLOR_RESET);
+		printf(ANSI_COLOR_RED "\nNot a prime or you have said this one before\n" ANSI_COLOR_RESET);
 		goto get_user_guess;
 	}
 	length = length_after_filter;
-	for (int i =0;i<length;++i) {
-	}
+	printf("\nyou have done %d/%d\n",og_length-length,og_length);
 }
 	printf(ANSI_COLOR_GREEN "\nWell done you got all the primes!\n" ANSI_COLOR_RESET);
 
