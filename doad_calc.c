@@ -241,8 +241,7 @@ int calculate_day(int year, int month, int day, int explain) {
       printf("\nday_code is %d\nand month_code is %d\n\n",day_code,month_code);
       }
       int century_part = floor(year/100);
-      double f = (double)year / 100.00;
-      int year_part = (int)((int)(f*100)%100);
+      int year_part = year % 100;
 
       int century_code = get_century_code(century_part);
       int year_code = get_year_code(year_part);

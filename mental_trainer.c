@@ -17,7 +17,7 @@ int main(int argc, char* argv[]) {
 	sleep(1);
 	if (argc < 2 ) {
 		printf("\nPlease use the format: mental_trainer --mode number_of_digits amount_of_time\n\n");
-		exit(0);
+		exit(1);
 	}
 	srand(time(NULL));
 	char* mode = argv[1];

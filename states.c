@@ -6,7 +6,7 @@ struct State {
 	char capital[30];
 };
 void print_state(struct State state) {
-	printf("\nname: %s\nfounded: %s\n",state.name,state.capital);
+	printf("\nname: %s\ncapital: %s\n",state.name,state.capital);
 }
 int filter_states(char* user_guess,struct State list[STATES_AMOUNT],int length) {
 	for (int i =0;i<length;++i) {
