@@ -54,6 +54,7 @@ void knighttour_game() {
 	memset(visited_squares,0,sizeof(visited_squares));
 
 	position_selection:
+	;
 	int xposition_knight = (rand() % BOARD_WIDTH) + 1;
 	int yposition_knight = (rand() % BOARD_LENGTH) + 1;
 
@@ -63,6 +64,7 @@ void knighttour_game() {
 	print_chess_positon(&knight,"Knight");
 	int move_counter = 0;
 	get_move:
+	;
 	printf("\nPlease input a knight move:\n");
 	memset(move,'\0',sizeof(move));
 	fgets(move,sizeof(move),stdin);
