@@ -23,12 +23,14 @@ void chesssquares_game() {
 	char colour_get[8];
 	struct Chess_piece knight;
 	get_pos:
+	;
 	int xposition = (rand() % BOARD_WIDTH) + 1;
 	int yposition = (rand() % BOARD_LENGTH) + 1;
 	char xposition_char = number_to_letter(xposition);
 	printf("\nWhat colour is the square: %c%d\n",xposition_char,yposition);
 
 	get_move:
+	;
 	printf("\nPlease input a colour as W or B:\n");
 	memset(colour_get,'\0',sizeof(colour_get));
 	fgets(colour_get,sizeof(colour_get),stdin);
