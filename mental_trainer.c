@@ -40,6 +40,14 @@ int main(int argc, char* argv[]) {
 		int length_of_time = atoi(argv[3]);
 		numbers_game(amount_of_digits,length_of_time);
 	}
+	else if (strcmp(mode,"--binary") == 0) {
+		if (argc < 2) {
+			exit(0);
+		}
+		int amount_of_digits = atoi(argv[2]);
+		int length_of_time = atoi(argv[3]);
+		binnumbers_game(amount_of_digits,length_of_time);
+	}
 	else if (strcmp(mode,"--cards") == 0) {
 		if (argc < 2) {
 			exit(0);
