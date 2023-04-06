@@ -70,6 +70,7 @@ int generate_all_possible_knight_moves_with_queen(struct Chess_piece knight,stru
 int blindknight_game_solved(struct Chess_piece knight, struct Chess_piece queen) {
 	char move[8];
 	position_selection:
+	;
 	int moves_array[8][2];
 	int distance[8];
 	float minimum_distance = 1000;
@@ -124,6 +125,7 @@ void blindknight_game() {
 	struct Chess_piece knight;
 	struct Chess_piece queen;
 	position_selection:
+	;
 	int xposition_knight = (rand() % BOARD_WIDTH) + 1;
 	int yposition_knight = (rand() % BOARD_LENGTH) + 1;
 	int xposition_queen = (rand() % BOARD_WIDTH) + 1;
