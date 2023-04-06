@@ -30,8 +30,11 @@ This will colour code your errors
 ### Numbers
 smt --numbers amount_of_digits length_of_time
 
+### Binary
+smt --binary amount_of_digits length_of_time
+
 ### Cards
-smt --numbers amount_of_cards length_of_time
+smt --cards amount_of_cards length_of_time
 
 ### constants (such as pi, e)
 smt --constants "constant_name" amount_of_digits
@@ -64,6 +67,15 @@ smt --primes_quiz
 
 You type in all the primes up to 1000, once done it'll say well done.
 
+### states quiz
+smt --states_quiz
+
+You type in all the us states, once done it'll say well done.
+
+### uk cities quiz
+smt --cities_quiz
+
+You type in all the uk cities, once done it'll say well done.
 
 ## Human calculator training
 ### Day of the week for any date calculation

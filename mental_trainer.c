@@ -140,6 +140,7 @@ int main(int argc, char* argv[]) {
 		printf("\nUse config.h as settings\n\n");
 		printf("\navaliable modes are: \n");
 		printf("\n--numbers amount_of_digits length_of_time \n");
+		printf("\n--binary amount_of_digits length_of_time \n");
 		printf("\n--cards amount_of_cards length_of_time \n");
 		printf("\n--constants name_of_constant amount_of_digits (only supports pi, e, phi and c. c being a custom one you define in config.h\n");
 		printf("\n--countries_quiz\n");
