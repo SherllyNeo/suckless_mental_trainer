@@ -274,7 +274,7 @@ int change_line_of_csv(char *filepath, char* line_to_replace, int replace_line) 
 	 else if (delay_code > 2) {
 		 days_to_add = 7;
 	 }
-	 else if (delay_code > 1) {
+	 else if (delay_code > 0) {
 		 days_to_add = 1;
 	 }
 	else {
