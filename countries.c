@@ -60,7 +60,7 @@ struct Country countries[COUNTRIES_AMOUNT] = {
         { "Central African Republic", "Bangui"},
         { "Chad", "N'Djamena"},
         { "Chile", "Santiago"},
-        { "China", "City of Victoria"},
+        { "China", "Beijing"},
         { "Colombia", "Bogotá"},
         { "Comoros", "Moroni"},
         { "Costa Rica", "San José"},

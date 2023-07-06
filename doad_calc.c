@@ -250,6 +250,11 @@ int calculate_day(int year, int month, int day, int explain) {
       }
 
       int result = (year_code + century_code + month_code + day_code) % 7;
+      if (is_leap_year) {
+		if (month == 1 || month == 2) {
+			result--;
+		}
+      }
       return result;
 
 
