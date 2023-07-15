@@ -14,7 +14,6 @@
 #include "states.c"
 #include "elements.c"
 #include "primes.c"
-#include "flashcards.c"
 #include "rooting.c"
 
 /* memory games */
@@ -42,6 +41,4 @@ void knighttour_game();
 void knighttour_game_solved();
 void chessquares_game();
 
-/* Studying  */
-void flashcards_game();
 
