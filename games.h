@@ -15,6 +15,7 @@
 #include "elements.c"
 #include "primes.c"
 #include "flashcards.c"
+#include "rooting.c"
 
 /* memory games */
 void numbers_game(int amount_of_number, int length_of_time);
@@ -32,6 +33,7 @@ void state_game();
 void doad_game(int explainer);
 void calculations_game(int amount_of_digits, char operation, int length_of_time);
 void powers_game(int amount_of_digits, int power, int length_of_time);
+void rooting_game(int amount_of_digits, int power);
 
 
 /* Blindfold Visualtion games */

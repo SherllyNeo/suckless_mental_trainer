@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
-#include <unistd.h>
 #include "config.h"
 #include "games.h"
 
@@ -82,6 +81,14 @@ int main(int argc, char* argv[]) {
 		int length_of_time = atoi(argv[4]);
 		powers_game(amount_of_digits,power,length_of_time);
 	}
+	else if (strcmp(mode,"--rooting") == 0) {
+		if (argc < 2) {
+			exit(0);
+		}
+		int amount_of_digits = atoi(argv[2]);
+		int power = atoi(argv[3]);
+		rooting_game(amount_of_digits,power);
+	}
 	else if (strcmp(mode,"--countries_quiz") == 0) {
 		if (argc < 2) {
 			exit(0);
@@ -130,9 +137,6 @@ int main(int argc, char* argv[]) {
 	else if (strcmp(mode,"--chess_squares") == 0) {
 		chesssquares_game();
 	}
-	else if (strcmp(mode,"--flashcards") == 0) {
-		flashcards_game();
-	}
 	else if ((strcmp(mode,"-h") == 0) || (strcmp(mode,"--help") == 0)) {
 		printf("\nPlease use format:\n");
 		printf("\nsmt --mode -options\n");
@@ -152,7 +156,6 @@ int main(int argc, char* argv[]) {
 		printf("\n--blind_knight\n");
 		printf("\n--knight_tour\n");
 		printf("\n--chess_squares\n");
-		printf("\n--flashcards\n");
 		printf("\n\nexamples!\n\n");
 		printf("\n--numbers 30 60 \n");
 

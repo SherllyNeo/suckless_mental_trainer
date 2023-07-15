@@ -5,9 +5,6 @@
 */
 
 
-/* Flashcard path - this will be from your $HOME file. Set it to what you need*/
-#define FLASHCARD_FOLDER ".local/share/flashcards"
-
 /* LOCI size shows how the numbers are chucked when displayed. IMAGE size is it is displayed when you make an error  */
 #define LOCI_SIZE_NUMBERS 6
 #define IMAGE_SIZE_NUMBERS 3
