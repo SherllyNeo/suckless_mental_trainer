@@ -26,14 +26,13 @@ char help[] = "\n \n \
                        \n-m rooting -a amount_of_digits -p exponent | no time limit \
                        \n-m knight_tour | -e to pre-calculate codes \
                        \n-m blind_knight \
-                       \n-m chess_squares ";
+                       \n-m chess_squares \n";
 
 
 
 
 int main(int argc, char* argv[]) {
 	printf("\nWelcome to Sherlly's Mental Trainer. A one of a kind feature rich and efficient tool for all of your mental athletic needs\n");
-	sleep(1);
 	srand(time(NULL));
     int i;
     char* mode = "numbers";
