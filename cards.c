@@ -31,8 +31,8 @@ void cards_game(int amount_of_cards, int length_of_time) {
 	char character_pool_suits[] = "HDSC";
 	int length_of_character_pool_values = strlen(character_pool_values);
 	int length_of_character_pool_suits = strlen(character_pool_suits);
-	char random_string[amount_of_cards+1];
-	int length_of_random_string = strlen(random_string);
+	char random_string[amount_of_cards*100];
+	int length_of_random_string = amount_of_cards;
 
 	memset(random_string, '\0', length_of_random_string);
 
