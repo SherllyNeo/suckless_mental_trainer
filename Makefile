@@ -1,8 +1,9 @@
-smt: main.c config.h games.h day_of_any_date.c doad_calc.h doad_calc.c cards.c constants.c calculation.c blind_knight.c knights_tour.c chess.c squares.c powers.c countries.c elements.c primes.c cities.c states.c binary.c rooting.c
-	$(CC) main.c config.h games.h doad_calc.h -g -std=gnu11 -o smt -lm
+src=src
+smt: $(src)/main.c $(src)/config.h $(src)/games.h $(src)/day_of_any_date.c $(src)/doad_calc.h $(src)/doad_calc.c $(src)/cards.c $(src)/constants.c $(src)/calculation.c $(src)/blind_knight.c $(src)/knights_tour.c $(src)/chess.c $(src)/squares.c $(src)/powers.c $(src)/countries.c $(src)/elements.c $(src)/primes.c $(src)/cities.c $(src)/states.c $(src)/binary.c $(src)/rooting.c
+	$(CC) $(src)/main.c -g -std=gnu11 -o smt -lm
 install:
 	cp -f smt /usr/local/bin
 clean:
-	$(CC) main.c config.h games.h doad_calc.h -g -std=gnu11 -o smt -lm && rm vg*
+	$(CC) $(src)/main.c -g -std=gnu11 -o smt -lm && rm vg*
 web:
-	emcc main.c -g -std=gnu11 -o smt.html -lm 
+	emcc $(src)/main.c -g -std=gnu11 -o smt.html -lm 
