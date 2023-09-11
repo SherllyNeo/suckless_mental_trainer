@@ -10,5 +10,5 @@ install:
 clean:
 	$(CC) $(src)/main.c -g -std=gnu11 -o $(binary_dir)/smt -lm && rm vg*
 web:
-	emcc $(src)/main.c -g -std=gnu11 -o $(binary)/web/smt.html -lm 
+	emcc $(src)/main.c -g -std=gnu11 -o $(binary_dir)/web/smt.html -lm 
 
