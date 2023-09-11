@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 #include <math.h>
 #include "config.h"
 
@@ -9,7 +10,7 @@ double result_calculate(int number1, int power) {
 	double result;
 	result = number1;
 	if (power == 1) {
-		printf("This is too easy, what is %d?\n",result);
+		printf("This is too easy, what is %lf?\n",result);
 	}
 	else if (power == 2) {
 		int question = number1 * number1;

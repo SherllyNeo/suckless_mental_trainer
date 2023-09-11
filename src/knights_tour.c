@@ -83,7 +83,7 @@ void knighttour_game() {
 		goto get_move;
 	}
 	else {
-		printf(ANSI_COLOR_GREEN "\nYou completed the tour!\n" ANSI_COLOR_RESET,move_counter);
+		printf(ANSI_COLOR_GREEN "\nYou completed the tour in %d moves!\n" ANSI_COLOR_RESET,move_counter);
 
 	}
 
