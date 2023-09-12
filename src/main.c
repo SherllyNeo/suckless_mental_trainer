@@ -170,7 +170,7 @@ int main(int argc, char* argv[]) {
             fgets(constant_name_tmp,sizeof(constant_name_tmp),stdin);
             constant_name_tmp[strcspn(constant_name_tmp, "\n")] = 0;
 
-            strcpy(constant_name,constant_name_tmp);
+            constant_name = &constant_name_tmp[0];
             if (!(!strcmp(constant_name,"e") || !strcmp(constant_name,"pi") || !strcmp(constant_name,"phi") || !strcmp(constant_name,"c") )) {
                 printf("\nPlease select either pi, e, phi or the custom c\n");
                 goto get_opt_const;
