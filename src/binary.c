@@ -64,10 +64,10 @@ void binnumbers_game(int amount_of_numbers, int length_of_time) {
 
 	 int compare_value = strncmp(user_input,random_string,amount_of_numbers);
 	 if ( compare_value == 0){
-		 printf(ANSI_COLOR_GREEN "\nWell done, you memorised it correctly!\n" ANSI_COLOR_RESET);
+		 printf( "\nWell done, you memorised it correctly!\n" );
 	 }
 	 else {
-	printf(ANSI_COLOR_RED "\nI'm afraid you made an error \n" ANSI_COLOR_RESET);
+	printf( "\nI'm afraid you made an error \n" );
 	/* Display random string with breaks ergomonic to image chunks */
 	for (int i = 0; i<amount_of_numbers;++i) {
 		char character_in_random_string = random_string[i];
@@ -76,18 +76,18 @@ void binnumbers_game(int amount_of_numbers, int length_of_time) {
 		if ( (i + 1) % (IMAGE_SIZE_NUMBERS) == 0 ) {
 
 			if (character_in_random_string == character_in_user_string) {
-				printf(ANSI_COLOR_GREEN "%c " ANSI_COLOR_RESET,character_in_random_string);
+				printf( "%c " ,character_in_random_string);
 			}
 			else {
-					printf(ANSI_COLOR_RED "%c " ANSI_COLOR_RESET,character_in_random_string);
+					printf( "%c " ,character_in_random_string);
 			}
  		 }
 		 else {
 			if (character_in_random_string == character_in_user_string) {
-				printf(ANSI_COLOR_GREEN "%c" ANSI_COLOR_RESET,character_in_random_string);
+				printf( "%c" ,character_in_random_string);
 			}
 			else {
-				printf(ANSI_COLOR_RED "%c" ANSI_COLOR_RESET,character_in_random_string);
+				printf( "%c" ,character_in_random_string);
 			}
 
 

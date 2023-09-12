@@ -89,14 +89,14 @@ while ( length != 0) {
 	fgets(user_input,sizeof(user_input),stdin);
 	length_after_filter = filter_states(user_input,states,length);
 	if (length_after_filter == length) {
-		printf(ANSI_COLOR_RED "\nNot a state or you said this one before\n" ANSI_COLOR_RESET);
+		printf( "\nNot a state or you said this one before\n" );
 		goto get_user_guess;
 	}
 	length = length_after_filter;
 	printf("\nyou have done %d/%d\n",og_length-length,og_length);
 
 }
-	printf(ANSI_COLOR_GREEN "\nWell done you got all the states!\n" ANSI_COLOR_RESET);
+	printf( "\nWell done you got all the states!\n" );
 
 
 }

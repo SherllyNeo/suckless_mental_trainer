@@ -23,11 +23,11 @@ int check_if_values_in_2D_array(int array[BOARD_AREA][2],int x, int y) {
 int validate_knight_move_with_previous_moves(struct Chess_piece knight,int previous_moves[BOARD_AREA][2],int xpos_new,int ypos_new) {
 	int valid_knight_jump = check_valid_knight_jump(knight,xpos_new,ypos_new);
 	if (valid_knight_jump == 0) {
-		printf(ANSI_COLOR_RED "\nNot a valid knight move\n" ANSI_COLOR_RESET);
+		printf( "\nNot a valid knight move\n" );
 		return 0;
 	}
 	if (check_if_values_in_2D_array(previous_moves,xpos_new,ypos_new)) {
-		printf(ANSI_COLOR_RED "\nYou've been to that square before\n" ANSI_COLOR_RESET);
+		printf( "\nYou've been to that square before\n" );
 		return 0;
 	}
 	else {
@@ -70,7 +70,7 @@ void knighttour_game() {
 	fgets(move,sizeof(move),stdin);
 	human_to_machine(move_array,move);
 	if (!validate_square_is_on_board(move_array[0],move_array[1])) {
-		printf(ANSI_COLOR_RED "\nNot a chess square\n" ANSI_COLOR_RESET);
+		printf( "\nNot a chess square\n" );
 		goto get_move;
 	}
 	if (!validate_knight_move_with_previous_moves(knight,visited_squares,move_array[0],move_array[1])) {
@@ -83,7 +83,7 @@ void knighttour_game() {
 		goto get_move;
 	}
 	else {
-		printf(ANSI_COLOR_GREEN "\nYou completed the tour in %d moves!\n" ANSI_COLOR_RESET,move_counter);
+		printf( "\nYou completed the tour in %d moves!\n" ,move_counter);
 
 	}
 
@@ -98,7 +98,7 @@ void knighttour_game_solved() {
 	fgets(move,sizeof(move),stdin);
 	human_to_machine(move_array,move);
 	if (!validate_square_is_on_board(move_array[0],move_array[1])) {
-		printf(ANSI_COLOR_RED "\nNot a chess square\n" ANSI_COLOR_RESET);
+		printf( "\nNot a chess square\n" );
 		goto get_move;
 	}
 	char* chess_moves[64] = { "A1","C2","E3","D1","B2","A4","C5","B7","D8","E6","G5","E4","D2","F1","H2","G4","E5","D3","B4","D5","F4","E2","D4","F5","E7","C6","A5","C4","D6","E8","G7","H5","G3","H1","F2","H3","G1","F3","E1","G2","H4","G6","H8","F7","H6","G8","F6","H7","F8","D7","B8","A6","C7","A8","B6","C8","A7","B5","A3","B1","C3","A2","C1","B3"};

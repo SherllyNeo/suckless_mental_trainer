@@ -12,7 +12,7 @@
 int validate_knight_move_with_queen(struct Chess_piece knight,struct Chess_piece queen,int xpos_new,int ypos_new) {
     int valid_knight_jump = check_valid_knight_jump(knight,xpos_new,ypos_new);
     if (valid_knight_jump == 0) {
-        printf(ANSI_COLOR_RED "\nNot a valid knight move\n" ANSI_COLOR_RESET);
+        printf( "\nNot a valid knight move\n" );
         return 0;
     }
     /* If the knight is going to land on the queen, it is valid */
@@ -21,7 +21,7 @@ int validate_knight_move_with_queen(struct Chess_piece knight,struct Chess_piece
     }
     /* Check the new position does not hit the queens sight */
     if (xpos_new == queen.xpos || ypos_new == queen.ypos || abs(xpos_new-queen.xpos) == abs(queen.ypos-ypos_new)) {
-        printf(ANSI_COLOR_RED "\nThis move would hit the queen's line of sight\n" ANSI_COLOR_RESET);
+        printf( "\nThis move would hit the queen's line of sight\n" );
         return 0;
     }
     return -1;
@@ -153,7 +153,7 @@ get_move:
     fgets(move,sizeof(move),stdin);
     human_to_machine(move_array,move);
     if (!validate_square_is_on_board(move_array[0],move_array[1])) {
-        printf(ANSI_COLOR_RED "\nNot a chess square\n" ANSI_COLOR_RESET);
+        printf( "\nNot a chess square\n" );
         goto get_move;
     }
     if (!validate_knight_move_with_queen(knight,queen,move_array[0],move_array[1])) {
@@ -166,10 +166,10 @@ get_move:
     }
     else {
         if (move_counter<=amount_of_moves_to_solve) {
-            printf(ANSI_COLOR_GREEN "\nYou killed the queen in %d moves! The optimal amount of moves\n" ANSI_COLOR_RESET,move_counter);
+            printf( "\nYou killed the queen in %d moves! The optimal amount of moves\n" ,move_counter);
         }
         else {
-            printf(ANSI_COLOR_GREEN "\nYou killed the queen in %d moves! The optimal amount of moves was %d\n" ANSI_COLOR_RESET,move_counter,amount_of_moves_to_solve);
+            printf( "\nYou killed the queen in %d moves! The optimal amount of moves was %d\n" ,move_counter,amount_of_moves_to_solve);
         }
 
     }

@@ -38,10 +38,10 @@ void chesssquares_game() {
 	char colour = colour_get[0];
 
 	if (real_colour == toupper(colour)) {
-		printf(ANSI_COLOR_GREEN "\nYou got it right!\n" ANSI_COLOR_RESET);
+		printf( "\nYou got it right!\n" );
 	}
 	else {
-		printf(ANSI_COLOR_RED "\nYou got it wrong\n" ANSI_COLOR_RESET);
+		printf( "\nYou got it wrong\n" );
 	}
 	goto get_pos;
 

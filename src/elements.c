@@ -157,14 +157,14 @@ while ( length != 0) {
 	fgets(user_input,sizeof(user_input),stdin);
 	length_after_filter = filter_elements(user_input,elements,length);
 	if (length_after_filter == length) {
-		printf(ANSI_COLOR_RED "\nNot an element\n" ANSI_COLOR_RESET);
+		printf( "\nNot an element\n" );
 		goto get_user_guess;
 	}
 	length = length_after_filter;
 	for (int i =0;i<length;++i) {
 	}
 }
-	printf(ANSI_COLOR_GREEN "\nWell done you got all the elements!\n" ANSI_COLOR_RESET);
+	printf( "\nWell done you got all the elements!\n" );
 
 
 }

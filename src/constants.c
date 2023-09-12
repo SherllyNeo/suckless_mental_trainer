@@ -51,10 +51,10 @@ void constants_game(char* constant,int amount_of_constant_digits) {
 	fgets(user_input, sizeof(user_input), stdin);
 	 int compare_value = strncmp(user_input,constant_string,amount_of_constant_digits);
 	 if ( compare_value == 0){
-		 printf(ANSI_COLOR_GREEN "\nWell done, you recalled %d digits of %s correctly!\n" ANSI_COLOR_RESET,amount_of_constant_digits,constant);
+		 printf( "\nWell done, you recalled %d digits of %s correctly!\n" ,amount_of_constant_digits,constant);
 	 }
 	 else {
-	printf(ANSI_COLOR_RED "\nI'm afraid you made an error \n" ANSI_COLOR_RESET);
+	printf( "\nI'm afraid you made an error \n" );
 	/* Display constant string with breaks ergomonic to image chunks */
 	for (int i = 0; i<amount_of_constant_digits;++i) {
 		char character_in_constant_string = constant_string[i];
@@ -63,18 +63,18 @@ void constants_game(char* constant,int amount_of_constant_digits) {
 		if ( (i + 1) % (IMAGE_SIZE_NUMBERS) == 0 ) {
 
 			if (character_in_constant_string == character_in_user_string) {
-				printf(ANSI_COLOR_GREEN "%c " ANSI_COLOR_RESET,character_in_constant_string);
+				printf( "%c " ,character_in_constant_string);
 			}
 			else {
-					printf(ANSI_COLOR_RED "%c " ANSI_COLOR_RESET,character_in_constant_string);
+					printf( "%c " ,character_in_constant_string);
 			}
  		 }
 		 else {
 			if (character_in_constant_string == character_in_user_string) {
-				printf(ANSI_COLOR_GREEN "%c" ANSI_COLOR_RESET,character_in_constant_string);
+				printf( "%c" ,character_in_constant_string);
 			}
 			else {
-				printf(ANSI_COLOR_RED "%c" ANSI_COLOR_RESET,character_in_constant_string);
+				printf( "%c" ,character_in_constant_string);
 			}
 
 

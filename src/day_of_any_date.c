@@ -52,10 +52,10 @@ void doad_game(int explain) {
 	char* day_of_week_lower = strlwr(day_of_week);
 
 	if (strncmp(user_input_lower,day_of_week_lower,strlen(day_of_week_lower)) == 0 ) {
-		printf(ANSI_COLOR_GREEN "\nyou got it right!\n" ANSI_COLOR_RESET);
+		printf( "\nyou got it right!\n" );
 	}
 	else {
-		printf(ANSI_COLOR_RED "\nyou got it wrong! The answer was %s\n" ANSI_COLOR_RESET,day_of_week);
+		printf( "\nyou got it wrong! The answer was %s\n" ,day_of_week);
 		}
 	sleep(1);
 	}
