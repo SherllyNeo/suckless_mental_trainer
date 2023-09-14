@@ -56,6 +56,18 @@ char useage[] = "\n \n \
                        \nblind_knight \
                        \nchess_squares \n";
 
+typedef enum {
+    START,
+    GAME_SELECT,
+    GAME_INTRO,
+    PLAY,
+    CHECK_WIN,
+    END_GAME
+} Game_Phase;
+
+typedef struct {
+    Game_Phase game_phase;
+} Game_State;
 
 
 void fill_str_data_fields(int *amount_of_data,int* length_of_time) {
@@ -92,13 +104,39 @@ void fill_str_data_fields(int *amount_of_data,int* length_of_time) {
 
 int main(int argc, char* argv[]) {
     InitWindow(INIT_WIDTH, INIT_HEIGHT, "Sherlly's Mental Trainer");
+    /* INIT GAME */
+    Game_State Game;
+    Game.game_phase = START;
+    char output[100];
+    output[0] = '\0';
+    int output_len = 1;
+
+    /* DRAW */
 
     while (!WindowShouldClose()) {
-        char* welcome_text = "\nWelcome to Sherlly's Mental Trainer. A one of a kind feature rich and efficient tool for all of your mental athletic needs\n";
-        int welcome_row = 8;
-        int font_size = 4;
-        display_text(welcome_text,font_size,BLACK, &welcome_row);
+        ClearBackground(BEIGE);
+        if (Game.game_phase ==  START) {
+            BeginDrawing();
+            char* welcome_text = "\nWelcome to Sherlly's Mental Trainer. A one of a kind feature rich and efficient tool for all of your mental athletic needs\n";
+            int welcome_row = 8;
+            int font_size = 3;
+            display_text(welcome_text,font_size,BLACK, &welcome_row);
+            display_text("Press enter to begin!",font_size,GRAY,&welcome_row);
+            if (IsKeyPressed(KEY_ENTER)) {
+                Game.game_phase = GAME_SELECT;
+            }
+            EndDrawing();
+
+        }
+        if (Game.game_phase == GAME_SELECT) {
+            int row = 0;
+            BeginDrawing();
+            get_user_input_text("Please select a game", 3, BLACK, output, &output_len, &row);
+            EndDrawing();
+
+        }
     }
+
 	srand(time(NULL));
     int i;
     char* mode = "numbers";
@@ -350,6 +388,7 @@ int main(int argc, char* argv[]) {
     else if (strcmp(mode,"chess_squares") == 0) {
         chesssquares_game();
     }
+
 
 	 return 0;
 }
