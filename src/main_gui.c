@@ -1,4 +1,5 @@
 #include <ctype.h>
+#include <endian.h>
 #include <raylib.h>
 #include "gui_parser.h"
 #include <unistd.h>
@@ -67,6 +68,7 @@ typedef enum {
 
 typedef struct {
     Game_Phase game_phase;
+    bool chosen_flag;
 } Game_State;
 
 
@@ -103,41 +105,8 @@ void fill_str_data_fields(int *amount_of_data,int* length_of_time) {
 
 
 int main(int argc, char* argv[]) {
-    InitWindow(INIT_WIDTH, INIT_HEIGHT, "Sherlly's Mental Trainer");
-    /* INIT GAME */
-    Game_State Game;
-    Game.game_phase = START;
-    char output[100];
-    output[0] = '\0';
-    int output_len = 1;
 
-    /* DRAW */
-
-    while (!WindowShouldClose()) {
-        ClearBackground(BEIGE);
-        if (Game.game_phase ==  START) {
-            BeginDrawing();
-            char* welcome_text = "\nWelcome to Sherlly's Mental Trainer. A one of a kind feature rich and efficient tool for all of your mental athletic needs\n";
-            int welcome_row = 8;
-            int font_size = 3;
-            display_text(welcome_text,font_size,BLACK, &welcome_row);
-            display_text("Press enter to begin!",font_size,GRAY,&welcome_row);
-            if (IsKeyPressed(KEY_ENTER)) {
-                Game.game_phase = GAME_SELECT;
-            }
-            EndDrawing();
-
-        }
-        if (Game.game_phase == GAME_SELECT) {
-            int row = 0;
-            BeginDrawing();
-            get_user_input_text("Please select a game", 3, BLACK, output, &output_len, &row);
-            EndDrawing();
-
-        }
-    }
-
-	srand(time(NULL));
+    srand(time(NULL));
     int i;
     char* mode = "numbers";
     char tmp_buffer[50];
@@ -148,6 +117,17 @@ int main(int argc, char* argv[]) {
     int length_of_time = 120;
     int explain = 0;
     int power = 1;
+
+    InitWindow(INIT_WIDTH, INIT_HEIGHT, "Sherlly's Mental Trainer");
+    /* INIT GAME */
+    Game_State Game;
+    Game.game_phase = START;
+    Game.chosen_flag = false;
+    char output[100];
+    output[0] = '\0';
+    int output_len = 1;
+
+
     
     if (argc > 1) {
         /* Parse command line arguments */
@@ -180,159 +160,47 @@ int main(int argc, char* argv[]) {
             }
         }
     }
-    else {
-        /* get user input */
-        get_user_input:
-
-        printf("%s",useage);
-
-
-        printf("Please type in a mode:\n");
-        fgets(tmp_buffer,sizeof(tmp_buffer),stdin);
-        tmp_buffer[strcspn(tmp_buffer, "\n")] = 0;
-        mode = &tmp_buffer[0];
-
-        if (strcmp(mode,"day_of_week") == 0) {
-            printf("would you like to have explain mode on (y/n):\n");
-            char response = fgetc(stdin);
-            if (response == 'y' || response == 'Y') {
-                explain = 1;
-            }
-        }
-
-        else if (strcmp(mode,"numbers") == 0) {
-            fill_str_data_fields(&amount_of_data, &length_of_time);
-        }
-        else if (strcmp(mode,"binary") == 0) {
-            fill_str_data_fields(&amount_of_data, &length_of_time);
-        }
-        else if (strcmp(mode,"cards") == 0) {
-            fill_str_data_fields(&amount_of_data, &length_of_time);
-        }
-        else if (strcmp(mode,"constants") == 0) {
-            /* get constant name */
-            char* _;
-            get_opt_const:
-            printf("What constant would you like to use? (pi, e, phi, c?\n");
-            char constant_name_tmp[50];
-            memset(constant_name_tmp,'\0',strlen(constant_name_tmp));
-
-            fgets(constant_name_tmp,sizeof(constant_name_tmp),stdin);
-            constant_name_tmp[strcspn(constant_name_tmp, "\n")] = 0;
-
-            constant_name = &constant_name_tmp[0];
-            if (!(!strcmp(constant_name,"e") || !strcmp(constant_name,"pi") || !strcmp(constant_name,"phi") || !strcmp(constant_name,"c") )) {
-                printf("\nPlease select either pi, e, phi or the custom c\n");
-                goto get_opt_const;
-            }
-
-            /* get amount of data for constant */
-            get_opt_integer:
-            printf("Amount of data?\n");
-            char amount_of_data_string[50];
-            memset(amount_of_data_string,'\0',strlen(amount_of_data_string));
-
-            fgets(amount_of_data_string,sizeof(amount_of_data_string),stdin);
-            amount_of_data_string[strcspn(amount_of_data_string, "\n")] = 0;
-
-            amount_of_data = (int) strtol(amount_of_data_string,&_,10);
-
-            if (amount_of_data == 0) {
-                printf("amount of data must be a positive integer\n");
-                goto get_opt_integer;
-            }
-
-        }
-        else if (strcmp(mode,"calculator") == 0) {
-            fill_str_data_fields(&amount_of_data, &length_of_time);
-            /* get amount of data for constant */
-            get_opt_operation:
-            printf("What operation do you want to use? (upports +, /, *, ^, -)\n");
-            char op_tmp[50];
-            memset(op_tmp,'\0',strlen(op_tmp));
-
-            fgets(op_tmp,sizeof(op_tmp),stdin);
-            op_tmp[strcspn(op_tmp, "\n")] = 0;
-            operation = op_tmp[0];
-
-            if (!(operation == '+' || operation == '/' || operation == '*' || operation == '^' || operation == '-')) {
-                printf("Please use +, /, *, ^ or -\n");
-                goto get_opt_operation;
-            }
-
-            calculations_game(amount_of_data,operation,length_of_time);
-        }
-        else if (strcmp(mode,"powers") == 0) {
-            fill_str_data_fields(&amount_of_data, &length_of_time);
-            /* get power */
-            get_opt_power:
-            printf("What power would you like to raise to?\n");
-            char* _;
-            char power_string[50];
-            memset(power_string,'\0',strlen(power_string));
-
-            fgets(power_string,sizeof(power_string),stdin);
-            power_string[strcspn(power_string, "\n")] = 0;
-
-            power = (int) strtol(power_string,&_,10);
-
-            if (power == 0) {
-                printf("Power must be an integer\n");
-                goto get_opt_power;
-            }
-        }
-        else if (strcmp(mode,"rooting") == 0) {
-            /* TODO */
-
-            /* get power */
-            get_opt_power_for_root:
-            printf("What power would you like to raise to?\n");
-            char* _;
-            char power_string[50];
-            memset(power_string,'\0',strlen(power_string));
-
-            fgets(power_string,sizeof(power_string),stdin);
-            power_string[strcspn(power_string, "\n")] = 0;
-
-            power = (int) strtol(power_string,&_,10);
-
-            if (power == 0) {
-                printf("Power must be an integer\n");
-                goto get_opt_power_for_root;
-            }
-
-            /* get amount of data */
-            get_opt_data_for_root:
-
-            printf("What amount of data?\n");
-            char amount_of_data_string[50];
-            memset(amount_of_data_string,'\0',strlen(amount_of_data_string));
-
-            fgets(amount_of_data_string,sizeof(amount_of_data_string),stdin);
-            amount_of_data_string[strcspn(amount_of_data_string, "\n")] = 0;
-
-            amount_of_data = (int) strtol(amount_of_data_string,&_,10);
-
-            if (amount_of_data == 0) {
-                printf("Amount of data must be a positive integer");
-                goto get_opt_data_for_root;
-            }
-        }
-        else if (strcmp(mode,"knight_tour") == 0) {
-            printf("would you like to have explain mode on (y/n):\n");
-            char response = fgetc(stdin);
-            if (response == 'y' || response == 'Y') {
-                explain = 1;
-            }
-        }
-        else {
-            printf("Could not find specified mode\n");
-            goto get_user_input;
-        }
-
-    }
-
     
+    char chosen[110];
+
+    /* DRAW */
+    while (!WindowShouldClose()) {
+        ClearBackground(BEIGE);
+    
+        if (Game.game_phase ==  START) {
+            BeginDrawing();
+            char* welcome_text = "\nWelcome to Sherlly's Mental Trainer. A one of a kind feature rich and efficient tool for all of your mental athletic needs\n";
+            int welcome_row = 8;
+            int font_size = 3;
+            display_text(welcome_text,font_size,BLACK, &welcome_row);
+            display_text("Press enter to begin!",font_size,GRAY,&welcome_row);
+            if (IsKeyPressed(KEY_ENTER)) {
+                Game.game_phase = GAME_SELECT;
+            }
+            EndDrawing();
+
+        }
+        if (Game.game_phase == GAME_SELECT) {
+            int row = 0;
+            if (Game.chosen_flag) {
+                sprintf(chosen,"You chose %s\n",output);
+                row = 10;
+                BeginDrawing();
+                display_text(chosen, 3, BLUE, &row);
+                mode = &chosen[0];
+                EndDrawing();
+            }
+            else {
+                BeginDrawing();
+                get_user_input_text("Please select a game", 3, BLACK, output, &output_len, &row);
+                EndDrawing();
+                if (IsKeyPressed(KEY_ENTER)) {
+                    Game.chosen_flag = true;
+                }
+            }
+
+        }
+    }
     /* use them to run */
     if (strcmp(mode,"day_of_week") == 0) {
         doad_game(explain);

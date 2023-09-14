@@ -12,8 +12,6 @@ int font_size(int scale) {
 void display_text(char *text_untouched,int size,Color color, int *row) {
     char text[6000];
     strcpy(text,text_untouched);
-
-    ClearBackground(BEIGE);
     int text_size = MeasureText(text, font_size(size));
     int text_difference = 0;
     char first_character[2];
@@ -94,11 +92,10 @@ void display_text(char *text_untouched,int size,Color color, int *row) {
 };
 
 void get_user_input_text(char text[],int size,Color color,char output[], int* output_len,int* row) {
-    ClearBackground(BEIGE);
     display_text(text, size, color, row);
         
     char cur_char = GetCharPressed();
-    if (isalnum(cur_char) || cur_char == ' ' || cur_char == '-' ) {
+    if (isalnum(cur_char) || cur_char == ' ' || cur_char == '-' || cur_char == '_' ) {
         output[*output_len - 1] = cur_char;
         output[*output_len] = '\0';
         *output_len += 1;
@@ -113,7 +110,6 @@ void get_user_input_text(char text[],int size,Color color,char output[], int* ou
 };
 
 void get_user_input_number(char text[],int size,Color color,char output[], int* output_len,int* row) {
-    ClearBackground(BEIGE);
     display_text(text, size, color, row);
         
     char cur_char = GetCharPressed();
