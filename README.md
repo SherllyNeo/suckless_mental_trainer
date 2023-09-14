@@ -67,3 +67,18 @@ avaliable modes are:
 -m chess_squares 
 
 
+
+# TYPES
+
+memory/airthmetic - Show data for X amount of time, then vanish and quiz, have to answer within certain amount of time
+Technical note
+array_test(array,chunk_size,time_for_all_data,time_for_testing);
+
+
+quiz - Have a list not shown, list within a time frame 
+array_quiz(array,ordered,time_to_testing);
+
+chess - blindfold chess practice
+
+
+
