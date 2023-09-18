@@ -23,6 +23,7 @@ char help[] = "\n \n \
                        \n-m elements_quiz \
                        \n-m primes_quiz \
                        \n-m day_of_week | -e to pre-calculate codes \
+                       \n-m speed_counting -a amount_of_digit -b bpm \
                        \n-m calculator -a amount_of_digits -o 'operation' -l length_of_time | supports +, /, *, ^, -  \
                        \n-m powers -a amount_of_digits -p exponent -l length_of_time \
                        \n-m rooting -a amount_of_digits -p exponent | no time limit \
@@ -45,6 +46,7 @@ char useage[] = "\n \n \
                        \nprimes_quiz \
                        \nday_of_week | -e to pre-calculate codes \
                        \ncalculator -a amount_of_digits -o 'operation' -l length_of_time | supports +, /, *, ^, -  \
+                       \nspeed_counting -a amount_of_digit -b bpm \
                        \npowers -a amount_of_digits -p exponent -l length_of_time \
                        \nrooting -a amount_of_digits -p exponent | no time limit \
                        \nknight_tour | -e to pre-calculate codes \
@@ -98,6 +100,7 @@ int main(int argc, char* argv[]) {
     int length_of_time = 120;
     int explain = 0;
     int power = 1;
+    int bpm = 60;
     
     if (argc > 1) {
         /* Parse command line arguments */
@@ -190,6 +193,42 @@ int main(int argc, char* argv[]) {
             if (amount_of_data == 0) {
                 printf("amount of data must be a positive integer\n");
                 goto get_opt_integer;
+            }
+
+        }
+        else if (strcmp(mode,"speed_counting") == 0) {
+            /* get constant name */
+            /* get amount of data for constant */
+            char* _;
+            get_opt_bpm:
+            printf("What bpm?\n");
+            char bpm_string[50];
+            memset(bpm_string,'\0',strlen(bpm_string));
+
+            fgets(bpm_string,sizeof(bpm_string),stdin);
+            bpm_string[strcspn(bpm_string, "\n")] = 0;
+
+            bpm = (int) strtol(bpm_string,&_,10);
+
+            if (bpm == 0) {
+                printf("bpm must be a positive integer\n");
+                goto get_opt_bpm;
+            }
+
+            /* get amount of data for constant */
+            get_opt_amount:
+            printf("Amount of data?\n");
+            char amount_of_data_string[50];
+            memset(amount_of_data_string,'\0',strlen(amount_of_data_string));
+
+            fgets(amount_of_data_string,sizeof(amount_of_data_string),stdin);
+            amount_of_data_string[strcspn(amount_of_data_string, "\n")] = 0;
+
+            amount_of_data = (int) strtol(amount_of_data_string,&_,10);
+
+            if (amount_of_data == 0) {
+                printf("amount of data must be a positive integer\n");
+                goto get_opt_amount;
             }
 
         }
@@ -302,6 +341,9 @@ int main(int argc, char* argv[]) {
     }
     else if (strcmp(mode,"calculator") == 0) {
         calculations_game(amount_of_data,operation,length_of_time);
+    }
+    else if (strcmp(mode,"speed_counting") == 0) {
+        speed_counting_game(amount_of_data,bpm);
     }
     else if (strcmp(mode,"powers") == 0) {
         powers_game(amount_of_data,power,length_of_time);
