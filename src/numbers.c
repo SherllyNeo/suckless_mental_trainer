@@ -4,6 +4,25 @@
 #include <time.h>
 #include <unistd.h>
 #include "config.h"
+#include <termios.h>
+
+int kbhit(void) {
+    struct timeval tv = { 0L, 0L };
+    fd_set fds;
+    FD_ZERO(&fds);
+    FD_SET(0, &fds);
+    return select(1, &fds, NULL, NULL, &tv);
+}
+
+// Function to clear the screen
+void clear_screen() {
+    // Check if the system is Windows
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
+}
 
 int get_random_index(int max_length) {
 	int index = rand() % max_length;
@@ -50,9 +69,16 @@ void numbers_game(int amount_of_numbers, int length_of_time) {
 
 
 	/* Clear screen */
-	printf("\nWill show for %d seconds before clearing \n",length_of_time);
-	sleep(length_of_time);
-	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" );
+	printf("\nWill show for %d seconds before clearing, press enter to clear early \n",length_of_time);
+    for (int i = 0; i < length_of_time; ++i) {
+        if (kbhit()) {
+            getchar(); // Clear the input buffer
+            break;
+        }
+        sleep(1);
+    }
+
+    clear_screen();
 
 	/* Get and see user input */
 
