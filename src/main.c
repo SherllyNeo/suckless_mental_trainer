@@ -12,7 +12,7 @@
 char help[] = "\n \n \
                \nsmt -m mode -options \
                \noptions are -m/--m for mode, -c/--constant_name for constant name, -op/--operation for operation, -a/--amount for amount of data, -l or --length_of_time for length of time (seconds), -e/--explain to explain and -p/--power for setting the powrr\
-               \nFull documentation and tutorials can be found at: sherlly.org \
+               \n
                \nUse config.h as settings\n \
                \navaliable modes are:  \
                \n-m \"numbers\" -a amount_of_digits -l length_of_time  \
